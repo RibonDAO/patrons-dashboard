@@ -1,5 +1,5 @@
 {
-  "name": "ribon-patrons-dashboard",
+  "name": "patrons-dashboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
