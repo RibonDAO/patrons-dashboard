@@ -6,7 +6,7 @@ https://github.com/open-sauced/open-sauced#readme
 <div align="center">
   <br>
   <img alt="Ribon Logo" src="https://user-images.githubusercontent.com/24739860/190657474-1cb9457a-144e-4376-967c-e26d0c0b802c.png" width="300px">
-  <h1>Ribon Patron Dashboard</h1>
+  <h1>Ribon Patrons Dashboard</h1>
   <strong>A React boilerplate containing everything we used to build the Ribon DApp</strong>
   <br>
   <a class="btn btn-primary ml-2" href="https://github.com/RibonDAO/frontend_template/generate" >Use this template in your project</a>
