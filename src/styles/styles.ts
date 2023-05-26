@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { Pie } from "react-chartjs-2";
 
 export const Container = styled.div`
-  width: 256px;
   padding: 24px;
+  width: 256px;
   border: 1px solid ${({ theme }) => theme.colors.mediumGray};
   border-radius: 16px;
   position: absolute;
