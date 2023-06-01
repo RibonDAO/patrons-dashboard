@@ -12,5 +12,5 @@ export const Container = styled.div`
 
 export const Title = styled.h6`
   margin: 8px 0 24px 0;
-  color: ${({ theme }) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
