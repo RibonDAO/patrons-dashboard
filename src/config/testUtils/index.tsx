@@ -9,7 +9,7 @@ import {
 import { ThemeProvider } from "styled-components";
 import { createMemoryHistory, MemoryHistory } from "history";
 import { Router } from "react-router-dom";
-import theme from "styles/theme";
+import { theme } from "@ribon.io/shared/styles";
 import { I18nextProvider } from "react-i18next";
 import i18n from "i18n-test";
 import AuthenticationProvider, {
