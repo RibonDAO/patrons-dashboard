@@ -1,5 +1,5 @@
 import GlobalStyles from "../src/styles/globalStyle";
-import theme from "../src/styles/theme";
+import { theme } from "@ribon.io/shared/styles";
 import { ThemeProvider } from "styled-components";
 import { MINIMAL_VIEWPORTS} from '@storybook/addon-viewport';
 import { ChakraProvider } from "@chakra-ui/react";
