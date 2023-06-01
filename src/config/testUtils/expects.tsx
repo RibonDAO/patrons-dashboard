@@ -15,3 +15,7 @@ export function expectImageToBeInTheDocument(alt: string) {
 export function expectDisplayValueToBeInTheDocument(value: string) {
   return expect(screen.getByDisplayValue(value)).toBeInTheDocument();
 }
+
+export function expectFunctionNotToHaveBeenCalledWith(fn: any, value: any) {
+  return expect(fn).not.toHaveBeenCalledWith(value);
+}
