@@ -10,7 +10,7 @@ import AuthenticationProvider, {
 } from "contexts/authenticationContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Router } from "react-router-dom";
-import theme from "styles/theme";
+import { theme } from "@ribon.io/shared/styles";
 
 import {
   renderHook as renderTestingLibraryHook,
