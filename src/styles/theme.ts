@@ -1,3 +1,7 @@
+import brandColors from "styles/colors/brand";
+import feedbackColors from "./colors/feedback";
+import neutralColors from "./colors/neutral";
+
 export interface Breakpoint {
   mobile: string;
   mobileMedium: string;
@@ -10,39 +14,68 @@ interface ThemeType {
   [key: string]: any;
 }
 
+const getSpacing = (space: number): string => {
+  const spacings = [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 112];
+
+  if (!spacings.includes(space)) {
+    return "0px";
+  }
+  return `${space}px`;
+};
+
 const theme: ThemeType = {
   grid: {},
   border: {},
   font: {
-    family: "Inter",
+    light: 300,
+    normal: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
     sizes: {},
   },
   colors: {
-    white: "#FFFFFF",
-    lightRed: "#FDEBFF",
-    mediumRed: "#F2A9C3",
-    red: "#FF6B6F",
-    lightGreen: "#D1FFDB",
-    mediumGreen: "#8CE0BE",
-    green: "#00DA93",
-    darkGreen: "#025B37",
-    lightOrange: "#FFD5BF",
-    mediumOrange: "#FF9661",
-    orange: "#FA7203",
-    darkOrange: "#AF5333",
-    lightYellow: "#F0E8C2",
-    mediumYellow: "#FFEB7A",
-    darkYellow: "#775B33",
-    yellow: "#FFCE00",
-    lightGray: "#F2F2F0",
-    mediumGray: "#D4CEC3",
-    gray: "#867F70",
-    darkGray: "#28241C",
-
-    lightShadow: "rgba(24, 86, 105, 0.15)",
-    darkShadow: "rgba(40, 36, 28, 0.15)",
+    neutral10: "#FFFFFF",
+    defaultShadow: "rgba(40, 36, 28, 0.15)",
+    defaultShadow10: "rgba(40, 36, 28, 0.1)",
+    defaultShadow05: "rgba(40, 36, 28, 0.05)",
+    backgroundOverlay: "rgba(34, 30, 22, 0.6)",
+    brand: brandColors,
+    neutral: neutralColors,
+    feedback: feedbackColors,
   },
-  spacings: {},
+  icons: {
+    lg: "48px",
+    md: "40px",
+    sm: "24px",
+    xs: "20px",
+  },
+  filters: {
+    filterOrange40:
+      "invert(58%) sepia(6%) saturate(5888%) hue-rotate(326deg) brightness(69%) contrast(100%)",
+  },
+  zindex: {
+    base: 0,
+    above: 1,
+    below: -1,
+    dropdown: 2,
+    navigator: 3,
+    navbar: 4,
+    modal: 5,
+    toast: 6,
+    loading: 7,
+
+    stories: {
+      base: 999,
+    },
+  },
+  spacing: (top: number, right?: number, bottom?: number, left?: number) =>
+    `${
+      getSpacing(top) +
+      (typeof right === "number" ? ` ${getSpacing(right)}` : "") +
+      (typeof bottom === "number" ? ` ${getSpacing(bottom)}` : "") +
+      (typeof left === "number" ? ` ${getSpacing(left)}` : "")
+    }`,
   breakpoints: {
     mobile: "0px",
     mobileMedium: "374px",

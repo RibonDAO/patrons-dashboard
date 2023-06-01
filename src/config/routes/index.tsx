@@ -6,7 +6,7 @@ function RoutesComponent(): JSX.Element {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/contributions/:id" element={<ContributionPage />} />
+      <Route path="/contributions" element={<ContributionPage />} />
     </Routes>
   );
 }

@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import RibonIcon from "assets/icons/ribon-icon.svg";
+import Header from "components/moleculars/Header";
 import * as S from "./styles";
 
 function ContributionPage(): JSX.Element {
@@ -9,9 +9,9 @@ function ContributionPage(): JSX.Element {
 
   return (
     <S.Container>
-      <img src={RibonIcon} alt="Ribon" />
-      <S.Title>{t("title")}</S.Title>
+      <Header title={`${t("title")}, Rina Sawayama!`} />
     </S.Container>
   );
 }
+
 export default ContributionPage;

@@ -1,12 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  flex: auto;
-  width: 328px;
+  padding-left: 228px;
+  padding-right: 228px;
 `;
 
 export const Title = styled.h6`
