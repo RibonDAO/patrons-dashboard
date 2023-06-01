@@ -6,7 +6,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex: auto;
-  width: 328px;
+  width: 100vw;
+  height: 100vh;
 `;
 
 export const Title = styled.h6`
