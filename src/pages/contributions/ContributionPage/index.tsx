@@ -15,9 +15,7 @@ function ContributionPage(): JSX.Element {
   const { currentPatron } = useCurrentPatron();
   const { contributions } = useContributions();
 
-  // eslint-disable-next-line no-unused-vars
-  const [currentContribution, setCurrentContribution] =
-    useState<Contribution>();
+  const [, setCurrentContribution] = useState<Contribution>();
 
   useEffect(() => {
     if (contributions?.length) {
