@@ -85,7 +85,6 @@ function Dropdown({
             zIndex: 1,
             margin: 0,
             width: "100%",
-            maxWidth: "472px",
           },
         }}
         parentSelector={() => parentElement}
