@@ -1,5 +1,5 @@
 import { Styles } from "react-modal";
-import theme from "styles/theme";
+import { theme } from "@ribon.io/shared/styles";
 
 export const defaultCustomStyles: Styles = {
   overlay: {

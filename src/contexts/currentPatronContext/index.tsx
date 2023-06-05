@@ -31,8 +31,8 @@ export const SHOW_MENU = "SHOW_MENU";
 
 // TODO: Remove this test patron
 export const TEST_PATRON: Patron = {
-  name: "John Doe",
-  email: "john@patron.io",
+  name: "Clara",
+  email: "clara@ribon",
   id: "H932-91023L-123901",
 };
 
