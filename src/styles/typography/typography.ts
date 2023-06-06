@@ -41,7 +41,7 @@ export const typography = css`
     h6,
     p,
     span {
-      color: ${({ theme }) => theme.colors.darkGray};
+      color: ${({ theme }) => theme.colors.neutral[800]};
     }
 
     h1 {

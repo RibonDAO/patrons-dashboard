@@ -1,4 +1,4 @@
-import theme from "./theme";
+import { theme } from "@ribon.io/shared/styles";
 import "styled-components";
 
 type Theme = typeof theme;
