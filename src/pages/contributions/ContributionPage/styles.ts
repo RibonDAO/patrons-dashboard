@@ -16,3 +16,9 @@ export const GiftText = styled.p`
 
   color: ${({ theme }) => theme.colors.neutral[700]};
 `;
+
+export const SelectContributionContainer = styled.div`
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    max-width: 328px;
+  }
+`;

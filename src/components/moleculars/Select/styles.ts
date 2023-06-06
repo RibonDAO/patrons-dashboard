@@ -6,10 +6,11 @@ export const Input = styled.div`
   height: 50px;
   margin-bottom: ${({ theme }) => theme.spacing(12)};
   padding: ${({ theme }) => theme.spacing(0, 12)};
-  border: 1px solid ${({ theme }) => theme.colors.brand.primary[300]};
+  border: 1px solid ${({ theme }) => theme.colors.neutral[300]};
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   box-sizing: border-box;
   color: ${({ theme }) => theme.colors.neutral[800]};
 
@@ -71,3 +72,7 @@ export const OptionContainer = styled.div`
 `;
 
 export const OptionText = styled.p``;
+
+export const ArrowIcon = styled.img`
+  height: 18px;
+`;

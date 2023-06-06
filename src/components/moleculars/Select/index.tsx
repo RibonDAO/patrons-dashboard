@@ -108,7 +108,7 @@ function Dropdown({
           readOnly
           style={{ color: customInputStyles.color }}
         />
-        <img src={ArrowDownIcon} alt="arrow-down" />
+        <S.ArrowIcon src={ArrowDownIcon} alt="arrow-down" />
       </S.Input>
     </S.Container>
   );

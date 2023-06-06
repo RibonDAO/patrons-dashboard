@@ -28,14 +28,16 @@ function ContributionPage(): JSX.Element {
       <Header title={`${t("title")}, ${currentPatron?.name}!`} />
       <S.GiftText>{t("giftText")}</S.GiftText>
       {contributions && (
-        <Select
-          name="name"
-          values={contributions}
-          valueText={(value) => value.label}
-          onOptionChanged={(contribution) => {
-            setCurrentContribution(contribution);
-          }}
-        />
+        <S.SelectContributionContainer>
+          <Select
+            name="name"
+            values={contributions}
+            valueText={(value) => value.label}
+            onOptionChanged={(contribution) => {
+              setCurrentContribution(contribution);
+            }}
+          />
+        </S.SelectContributionContainer>
       )}
     </S.Container>
   );
