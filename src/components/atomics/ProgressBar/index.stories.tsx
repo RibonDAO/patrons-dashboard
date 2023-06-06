@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import theme from "styles/theme";
+import { theme } from "@ribon.io/shared/styles";
 import ProgressBar, { Props } from ".";
 
 export default {
