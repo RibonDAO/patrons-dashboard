@@ -3,6 +3,7 @@
     "title": "RibonDAO Frontend Template"
   },
   "contributions": {
-    "title": "Welcome"
+    "title": "Welcome",
+    "giftText": "Select gift"
   }
 }
