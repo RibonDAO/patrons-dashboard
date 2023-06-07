@@ -7,7 +7,16 @@ import Subtitle from "components/moleculars/Subtitle";
 import Icon from "components/atomics/Icon";
 import * as S from "./styles";
 
-function EngagementSection(): JSX.Element {
+type Props = {
+  donationsPerPerson: string;
+  totalDonors: string;
+  firstTimeDonors: string;
+};
+function EngagementSection({
+  donationsPerPerson,
+  firstTimeDonors,
+  totalDonors,
+}: Props): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "contributions.engagementSection",
   });
@@ -31,14 +40,14 @@ function EngagementSection(): JSX.Element {
         </S.TitleContainer>
         <S.DataContainer>
           <Data
-            data="80,000"
+            data={totalDonors}
             label={t("totalDonors")}
             color={brand.tertiary[800]}
           />
         </S.DataContainer>
         <S.DataContainer>
           <Data
-            data="2,0"
+            data={donationsPerPerson}
             label={t("donationsPerPerson")}
             color={brand.tertiary[800]}
           />
@@ -51,7 +60,7 @@ function EngagementSection(): JSX.Element {
                   text={
                     <Trans
                       i18nKey="contributions.engagementSection.firstGiftText"
-                      values={{ amount: "16,000" }}
+                      values={{ amount: firstTimeDonors }}
                     />
                   }
                   icon={{

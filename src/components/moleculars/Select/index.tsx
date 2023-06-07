@@ -89,10 +89,10 @@ function Dropdown({
         }}
         parentSelector={() => parentElement}
       >
-        {values.map((value) => (
+        {values.map((value, index) => (
           <S.OptionContainer
+            key={index.toString()}
             onClick={() => handleOptionClick(value)}
-            key={value}
           >
             <S.OptionText>{valueToText(value)}</S.OptionText>
           </S.OptionContainer>

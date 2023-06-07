@@ -5,6 +5,7 @@ import Select from "components/moleculars/Select";
 import { useContributions } from "hooks/apiHooks/useContributions";
 import { useEffect, useState } from "react";
 import { Contribution } from "@ribon.io/shared/types";
+import { AVG_FIRST_TIME_DONORS_PERCENTAGE } from "utils/constants";
 import EngagementSection from "./EngagementSection";
 import * as S from "./styles";
 
@@ -15,8 +16,8 @@ function ContributionPage(): JSX.Element {
 
   const { currentPatron } = useCurrentPatron();
   const { contributions } = useContributions();
-
-  const [, setCurrentContribution] = useState<Contribution>();
+  const [currentContribution, setCurrentContribution] =
+    useState<Contribution>();
 
   useEffect(() => {
     if (contributions?.length) {
@@ -41,7 +42,16 @@ function ContributionPage(): JSX.Element {
         </S.SelectContributionContainer>
       )}
       <S.Section>
-        <EngagementSection />
+        {currentContribution?.stats && (
+          <EngagementSection
+            totalDonors={currentContribution.stats.totalTickets?.toString()}
+            donationsPerPerson={currentContribution.stats.avgDonationsPerPerson?.toString()}
+            firstTimeDonors={(
+              currentContribution.stats.totalTickets *
+              AVG_FIRST_TIME_DONORS_PERCENTAGE
+            ).toString()}
+          />
+        )}
       </S.Section>
     </S.Container>
   );

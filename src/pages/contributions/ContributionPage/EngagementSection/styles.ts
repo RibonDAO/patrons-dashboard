@@ -16,6 +16,7 @@ export const DataContainer = styled.div`
 `;
 
 export const TooltipCardContainer = styled.div`
+  margin-top: ${({ theme }) => theme.spacing(16)};
   margin-bottom: ${({ theme }) => theme.spacing(16)};
   margin-left: -32px;
   margin-right: -32px;
