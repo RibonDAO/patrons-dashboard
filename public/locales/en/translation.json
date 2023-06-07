@@ -4,6 +4,12 @@
   },
   "contributions": {
     "title": "Welcome",
-    "giftText": "Select gift"
+    "giftText": "Select gift",
+    "engagementSection": {
+      "title": "Engagement",
+      "totalDonors": "People donated your gift tickets",
+      "donationsPerPerson": "Donations per person (on average)",
+      "firstGiftText": "Your gift allowed nearly <strong>{{amount}}</strong> people to donate for the first time"
+    }
   }
 }
