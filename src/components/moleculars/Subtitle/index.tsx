@@ -3,19 +3,19 @@ import Icon, { IconProps } from "components/atomics/Icon";
 import * as S from "./styles";
 
 export type Props = {
-  title: string;
+  text: string | JSX.Element;
   icon: IconProps;
   secondaryColor: string;
 };
-function Title({ title, icon, secondaryColor }: Props): JSX.Element {
+function Subtitle({ text, icon, secondaryColor }: Props): JSX.Element {
   return (
     <S.Container>
       <S.IconBox secondaryColor={secondaryColor}>
         <Icon {...icon} />
       </S.IconBox>
-      <S.Title>{title}</S.Title>
+      <S.Subtitle>{text}</S.Subtitle>
     </S.Container>
   );
 }
 
-export default Title;
+export default Subtitle;
