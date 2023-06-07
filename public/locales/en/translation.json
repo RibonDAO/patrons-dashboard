@@ -4,6 +4,12 @@
   },
   "contributions": {
     "title": "Welcome",
-    "giftText": "Select gift"
+    "giftText": "Select gift",
+    "giftStatus": {
+      "title": "Gift Status",
+      "gift": "Gift",
+      "already_used": "Already used",
+      "yet_to_be_used": "Yet to be used"
+    }
   }
 }

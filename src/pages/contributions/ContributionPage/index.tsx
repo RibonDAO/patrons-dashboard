@@ -6,6 +6,7 @@ import { useContributions } from "hooks/apiHooks/useContributions";
 import { useEffect, useState } from "react";
 import { Contribution } from "@ribon.io/shared/types";
 import * as S from "./styles";
+import GiftStatusSection from "./GiftStatusSection";
 
 function ContributionPage(): JSX.Element {
   const { t } = useTranslation("translation", {
@@ -15,7 +16,8 @@ function ContributionPage(): JSX.Element {
   const { currentPatron } = useCurrentPatron();
   const { contributions } = useContributions();
 
-  const [, setCurrentContribution] = useState<Contribution>();
+  const [currentContribution, setCurrentContribution] =
+    useState<Contribution>();
 
   useEffect(() => {
     if (contributions?.length) {
@@ -38,6 +40,9 @@ function ContributionPage(): JSX.Element {
             }}
           />
         </S.SelectContributionContainer>
+      )}
+      {currentContribution && (
+        <GiftStatusSection {...currentContribution.stats} />
       )}
     </S.Container>
   );
