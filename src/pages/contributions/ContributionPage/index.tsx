@@ -8,6 +8,7 @@ import { Contribution } from "@ribon.io/shared/types";
 import { AVG_FIRST_TIME_DONORS_PERCENTAGE } from "utils/constants";
 import EngagementSection from "./EngagementSection";
 import * as S from "./styles";
+import GiftStatusSection from "./GiftStatusSection";
 
 function ContributionPage(): JSX.Element {
   const { t } = useTranslation("translation", {
@@ -41,6 +42,11 @@ function ContributionPage(): JSX.Element {
           />
         </S.SelectContributionContainer>
       )}
+      <S.GiftSection>
+        {currentContribution && (
+          <GiftStatusSection {...currentContribution.stats} />
+        )}
+      </S.GiftSection>
       <S.Section>
         <S.Divider />
         {currentContribution?.stats && (
