@@ -9,6 +9,7 @@ export const Container = styled.div`
 
 export const Subtitle = styled.p`
   ${defaultBodySmMedium}
+
   color: ${({ theme }) => theme.colors.brand.tertiary[800]};
 `;
 export const IconBox = styled.div<{

@@ -5,7 +5,6 @@ export const Container = styled.div<{
   border: boolean;
 }>`
   border-radius: 8px;
-  display: flex;
   background: ${(props) =>
     props.backgroundColor || props.theme.colors.neutral10};
 
