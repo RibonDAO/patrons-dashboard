@@ -10,6 +10,12 @@
       "gift": "Gift",
       "already_used": "Already used",
       "yet_to_be_used": "Yet to be used"
+    },
+    "engagementSection": {
+      "title": "Engagement",
+      "totalDonors": "People donated your gift tickets",
+      "donationsPerPerson": "Donations per person (on average)",
+      "firstGiftText": "Your gift allowed nearly <strong>{{amount}}</strong> people to donate for the first time"
     }
   }
 }

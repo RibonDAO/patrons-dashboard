@@ -4,6 +4,7 @@ export const Web = styled.div`
   display: block;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.pad}) {
+    padding: ${({ theme }) => theme.spacing(24)};
     display: none;
   }
 `;
@@ -29,6 +30,7 @@ export const Container = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.pad}) {
     margin-bottom: ${({ theme }) => theme.spacing(0)};
+    padding: ${({ theme }) => theme.spacing(24)};
     flex-direction: column;
     gap: ${({ theme }) => theme.spacing(16)};
     align-items: flex-start;

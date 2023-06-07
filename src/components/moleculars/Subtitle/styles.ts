@@ -1,15 +1,16 @@
 import styled from "styled-components";
-import { defaultHeadingXxs } from "styles/typography/default";
+import { defaultBodySmMedium } from "styles/typography/default";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  gap: ${({ theme }) => theme.spacing(12)};
-  align-items: center;
+  gap: ${({ theme }) => theme.spacing(8)};
 `;
 
-export const Title = styled.div`
-  ${defaultHeadingXxs}
+export const Subtitle = styled.p`
+  ${defaultBodySmMedium}
+
+  color: ${({ theme }) => theme.colors.brand.tertiary[800]};
 `;
 export const IconBox = styled.div<{
   secondaryColor: string;
@@ -18,7 +19,6 @@ export const IconBox = styled.div<{
   height: 40px;
   border-radius: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
   background: ${(props) =>
     props.secondaryColor || props.theme.colors.neutral10};
