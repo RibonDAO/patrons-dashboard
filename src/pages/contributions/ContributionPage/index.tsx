@@ -45,12 +45,12 @@ function ContributionPage(): JSX.Element {
         <S.Divider />
         {currentContribution?.stats && (
           <EngagementSection
-            totalDonors={currentContribution.stats.totalTickets?.toString()}
-            donationsPerPerson={currentContribution.stats.avgDonationsPerPerson?.toString()}
+            totalDonors={currentContribution.stats.totalTickets?.toLocaleString()}
+            donationsPerPerson={currentContribution.stats.avgDonationsPerPerson?.toLocaleString()}
             firstTimeDonors={(
               currentContribution.stats.totalTickets *
               AVG_FIRST_TIME_DONORS_PERCENTAGE
-            ).toString()}
+            ).toLocaleString()}
           />
         )}
         <S.Divider />
