@@ -42,6 +42,7 @@ function ContributionPage(): JSX.Element {
         </S.SelectContributionContainer>
       )}
       <S.Section>
+        <S.Divider />
         {currentContribution?.stats && (
           <EngagementSection
             totalDonors={currentContribution.stats.totalTickets?.toString()}
@@ -52,6 +53,7 @@ function ContributionPage(): JSX.Element {
             ).toString()}
           />
         )}
+        <S.Divider />
       </S.Section>
     </S.Container>
   );

@@ -53,7 +53,7 @@ function EngagementSection({
           />
         </S.DataContainer>
         <S.TooltipCardContainer>
-          <Card border={false} backgroundColor={brand.tertiary[25]}>
+          <Card border={false} backgroundColor="transparent">
             <S.InnerCardContainer>
               <S.SubtitleContainer>
                 <Subtitle

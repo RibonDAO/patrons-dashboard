@@ -7,7 +7,7 @@ export const Container = styled.div`
   gap: ${({ theme }) => theme.spacing(8)};
 `;
 
-export const Subtitle = styled.div`
+export const Subtitle = styled.p`
   ${defaultBodySmMedium}
   color: ${({ theme }) => theme.colors.brand.tertiary[800]};
 `;
