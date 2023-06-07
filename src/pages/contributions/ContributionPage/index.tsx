@@ -5,6 +5,7 @@ import Select from "components/moleculars/Select";
 import { useContributions } from "hooks/apiHooks/useContributions";
 import { useEffect, useState } from "react";
 import { Contribution } from "@ribon.io/shared/types";
+import EngagementSection from "./EngagementSection";
 import * as S from "./styles";
 
 function ContributionPage(): JSX.Element {
@@ -39,6 +40,9 @@ function ContributionPage(): JSX.Element {
           />
         </S.SelectContributionContainer>
       )}
+      <S.Section>
+        <EngagementSection />
+      </S.Section>
     </S.Container>
   );
 }

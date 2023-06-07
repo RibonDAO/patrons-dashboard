@@ -22,3 +22,12 @@ export const SelectContributionContainer = styled.div`
     max-width: 328px;
   }
 `;
+
+export const Section = styled.div`
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: ${({ theme }) => theme.spacing(24)};
+  }
+  margin-bottom: ${({ theme }) => theme.spacing(16)};
+`;
