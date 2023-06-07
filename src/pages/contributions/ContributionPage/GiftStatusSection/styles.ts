@@ -13,7 +13,9 @@ export const Mobile = styled.div`
   display: none;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.pad}) {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: ${({ theme }) => theme.spacing(16)};
   }
 `;
 
@@ -21,13 +23,14 @@ export const Container = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing(24)};
   display: flex;
   flex-direction: row;
-  gap: ${({ theme }) => theme.spacing(64)};
+  gap: ${({ theme }) => theme.spacing(112)};
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.pad}) {
+    margin-bottom: ${({ theme }) => theme.spacing(0)};
     flex-direction: column;
-    gap: ${({ theme }) => theme.spacing(24)};
+    gap: ${({ theme }) => theme.spacing(16)};
     align-items: flex-start;
   }
 `;
@@ -37,12 +40,11 @@ export const TitleContainer = styled.div`
 `;
 
 export const DataContainer = styled.div`
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: row;
-  gap: ${({ theme }) => theme.spacing(24)};
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   text-align: left;
 
   * {
@@ -50,6 +52,8 @@ export const DataContainer = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.pad}) {
+    width: 100%;
+    gap: ${({ theme }) => theme.spacing(24)};
     align-items: flex-start;
   }
 `;

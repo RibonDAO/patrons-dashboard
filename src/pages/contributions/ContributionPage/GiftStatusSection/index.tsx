@@ -19,8 +19,8 @@ function GiftStatusSection({ ...stats }: ContributionStats): JSX.Element {
   };
 
   const progressBarAttributes = {
-    label: "60%",
-    value: 60 * 100,
+    label: `${stats.usagePercentage}%`,
+    value: stats.usagePercentage,
     max: 100,
   };
 
