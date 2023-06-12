@@ -16,6 +16,12 @@
       "totalDonors": "People donated your gift tickets",
       "donationsPerPerson": "Donations per person (on average)",
       "firstGiftText": "Your gift allowed nearly <strong>{{amount}}</strong> people to donate for the first time"
+    },
+    "giftBoostSection":{
+      "modalFee": {
+        "title": "How Ribon’s fee works",
+        "description": "Your gift is either <b>100%</b> donated or <b>boosted</b> before being donated (we only charge a 10% fee on the added value)."
+      }
     }
   }
 }
