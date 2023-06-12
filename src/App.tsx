@@ -2,8 +2,9 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { QueryClient, QueryClientProvider } from "react-query";
 import RoutesComponent from "config/routes";
+import CurrentPatronProvider from "contexts/currentPatronContext";
+import { theme } from "@ribon.io/shared/styles";
 import GlobalStyle from "./styles/globalStyle";
-import theme from "./styles/theme";
 
 function App() {
   const queryClient = new QueryClient();
@@ -13,7 +14,9 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <BrowserRouter>
-          <RoutesComponent />
+          <CurrentPatronProvider>
+            <RoutesComponent />
+          </CurrentPatronProvider>
         </BrowserRouter>
       </ThemeProvider>
     </QueryClientProvider>
