@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import parse from "html-react-parser";
-import ModalDialog from "components/moleculars/Modal/ModalDialog";
+import ModalDialog from "components/moleculars/modals/ModalDialog";
 
 function GiftBoostSection(): JSX.Element {
   const { t } = useTranslation("translation", {
