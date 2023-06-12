@@ -9,6 +9,7 @@ import { AVG_FIRST_TIME_DONORS_PERCENTAGE } from "utils/constants";
 import EngagementSection from "./EngagementSection";
 import * as S from "./styles";
 import GiftStatusSection from "./GiftStatusSection";
+import GiftBoostSection from "./GiftBoostSection";
 
 function ContributionPage(): JSX.Element {
   const { t } = useTranslation("translation", {
@@ -58,6 +59,13 @@ function ContributionPage(): JSX.Element {
               AVG_FIRST_TIME_DONORS_PERCENTAGE
             ).toString()}
           />
+        )}
+        <S.Divider />
+      </S.Section>
+      <S.Section>
+        <S.Divider />
+        {currentContribution?.stats && (
+          <GiftBoostSection {...currentContribution.stats} />
         )}
         <S.Divider />
       </S.Section>
