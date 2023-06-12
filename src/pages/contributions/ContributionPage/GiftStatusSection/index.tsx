@@ -9,11 +9,11 @@ import * as S from "./styles";
 
 function GiftStatusSection({ ...stats }: ContributionStats): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "contributions",
+    keyPrefix: "contributions.giftStatus",
   });
 
   const titleAttributes = {
-    title: t("giftStatus.title"),
+    title: t("title"),
     icon: { name: "alarm", color: theme.colors.brand.primary[600] },
     secondaryColor: theme.colors.brand.primary[50],
   };
@@ -25,19 +25,19 @@ function GiftStatusSection({ ...stats }: ContributionStats): JSX.Element {
   };
 
   const giftAttributes = {
-    label: t("giftStatus.gift"),
+    label: t("gift"),
     data: stats.initialAmount.toString(),
     color: theme.colors.brand.primary[800],
   };
 
   const alreadyUsedAttributes = {
-    label: t("giftStatus.already_used"),
+    label: t("already_used"),
     data: stats.usedAmount.toString(),
     color: theme.colors.brand.primary[600],
   };
 
   const yetToBeUsedAttributes = {
-    label: t("giftStatus.yet_to_be_used"),
+    label: t("yet_to_be_used"),
     data: stats.remainingAmount.toString(),
     color: theme.colors.neutral[800],
   };

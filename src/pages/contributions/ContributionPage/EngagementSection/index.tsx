@@ -1,10 +1,11 @@
 import Card from "components/moleculars/Card";
 import Title from "components/moleculars/Title";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { theme } from "@ribon.io/shared/styles";
 import Data from "components/moleculars/Data";
 import Subtitle from "components/moleculars/Subtitle";
 import Icon from "components/atomics/Icon";
+import parse from "html-react-parser";
 import * as S from "./styles";
 
 type Props = {
@@ -57,12 +58,11 @@ function EngagementSection({
             <S.InnerCardContainer>
               <S.SubtitleContainer>
                 <Subtitle
-                  text={
-                    <Trans
-                      i18nKey="contributions.engagementSection.firstGiftText"
-                      values={{ amount: firstTimeDonors }}
-                    />
-                  }
+                  text={parse(
+                    t("firstGiftText", {
+                      amount: firstTimeDonors,
+                    }),
+                  )}
                   icon={{
                     name: "emoji_objects",
                     size: "20px",
