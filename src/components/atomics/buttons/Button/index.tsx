@@ -22,8 +22,6 @@ export type ButtonProps = {
   disabled?: boolean;
   round?: boolean;
   size?: string;
-  eventName?: string;
-  eventParams?: Record<string, any>;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const { primary } = theme.colors.brand;
@@ -45,8 +43,6 @@ export default function Button({
   disabled = false,
   round = false,
   size = "large",
-  eventName,
-  eventParams,
   ...props
 }: ButtonProps): JSX.Element {
   function activeTextColor() {

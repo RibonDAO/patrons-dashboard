@@ -1,9 +1,8 @@
 import { useTranslation } from "react-i18next";
 import parse from "html-react-parser";
-import { ContributionStats } from "@ribon.io/shared";
 import ModalDialog from "components/moleculars/Modal/ModalDialog";
 
-function GiftBoostSection({ ...stats }: ContributionStats): JSX.Element {
+function GiftBoostSection(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "contributions.giftBoostSection",
   });

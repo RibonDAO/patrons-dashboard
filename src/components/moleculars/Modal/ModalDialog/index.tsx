@@ -16,8 +16,6 @@ export type Props = {
   primaryButton?: ButtonProps | null;
   secondaryButton?: ButtonProps | null;
   children?: JSX.Element[] | JSX.Element | null;
-  eventName?: string;
-  eventParams?: Record<string, any>;
 };
 
 function ModalDialog({
@@ -27,8 +25,6 @@ function ModalDialog({
   primaryButton = null,
   secondaryButton = null,
   children = null,
-  eventName,
-  eventParams,
   type,
   icon,
   iconColor,
@@ -139,8 +135,6 @@ function ModalDialog({
           textColor={primaryButtonTextColor()}
           backgroundColor={primaryButtonBackgroundColor()}
           onClick={primaryButton.onClick}
-          eventName={primaryButton.eventName}
-          eventParams={primaryButton.eventParams}
         />
       )}
       {secondaryButton && (
@@ -150,8 +144,6 @@ function ModalDialog({
           backgroundColor={theme.colors.neutral10}
           onClick={secondaryButton.onClick}
           borderColor={theme.colors.neutral[600]}
-          eventName={secondaryButton.eventName}
-          eventParams={secondaryButton.eventParams}
         />
       )}
 
