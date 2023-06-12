@@ -17,15 +17,14 @@ function ContributionPage(): JSX.Element {
   });
 
   const { currentPatron } = useCurrentPatron();
-  const { contributions } = useContributions();
+  const { contributions, isLoading: loadingContributions } = useContributions();
   const [currentContribution, setCurrentContribution] =
     useState<Contribution>();
 
   useEffect(() => {
-    if (contributions?.length) {
+    if (contributions?.length && !loadingContributions)
       setCurrentContribution(contributions[0]);
-    }
-  }, [JSON.stringify(contributions)]);
+  }, [loadingContributions]);
 
   return (
     <S.Container>
@@ -52,12 +51,14 @@ function ContributionPage(): JSX.Element {
         <S.Divider />
         {currentContribution?.stats && (
           <EngagementSection
-            totalDonors={currentContribution.stats.totalTickets?.toString()}
-            donationsPerPerson={currentContribution.stats.avgDonationsPerPerson?.toString()}
+            totalDonors={currentContribution.stats.totalTickets?.toLocaleString()}
+            donationsPerPerson={currentContribution.stats.avgDonationsPerPerson?.toLocaleString()}
             firstTimeDonors={(
               currentContribution.stats.totalTickets *
               AVG_FIRST_TIME_DONORS_PERCENTAGE
-            ).toString()}
+            )
+              .toFixed()
+              .toLocaleString()}
           />
         )}
         <S.Divider />
