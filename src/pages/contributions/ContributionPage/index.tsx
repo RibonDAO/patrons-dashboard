@@ -61,13 +61,9 @@ function ContributionPage(): JSX.Element {
           />
         )}
         <S.Divider />
-      </S.Section>
-      <S.Section>
-        <S.Divider />
         {currentContribution?.stats && (
           <GiftBoostSection {...currentContribution.stats} />
         )}
-        <S.Divider />
       </S.Section>
     </S.Container>
   );
