@@ -3,6 +3,14 @@ import GiftBoostSection from "pages/contributions/ContributionPage/GiftBoostSect
 
 describe("GiftBoostSection", () => {
   it("renders without error", () => {
-    renderComponent(<GiftBoostSection />);
+    renderComponent(
+      <GiftBoostSection
+        contributionsInspiredByYou="800"
+        increaseAmount="100"
+        amountToCause="900"
+        ribonFee="10"
+        initialGift="100"
+      />,
+    );
   });
 });

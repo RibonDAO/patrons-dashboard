@@ -62,7 +62,15 @@ function ContributionPage(): JSX.Element {
           />
         )}
         <S.Divider />
-        {currentContribution?.stats && <GiftBoostSection />}
+        {currentContribution?.stats && (
+          <GiftBoostSection
+            amountToCause={`${currentContribution.stats.totalAmountToCause}`}
+            increaseAmount={`+${currentContribution.stats.totalIncreasePercentage}%`}
+            contributionsInspiredByYou={`+${currentContribution.stats.boostAmount}`}
+            ribonFee={currentContribution.stats.ribonFee.toString()}
+            initialGift={currentContribution.stats.initialAmount.toString()}
+          />
+        )}
       </S.Section>
     </S.Container>
   );
