@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import Card from "components/moleculars/Card";
+import Card from "components/moleculars/cards/Card";
 import Data from "components/moleculars/Data";
 import { theme } from "@ribon.io/shared/styles";
 import Title from "components/moleculars/Title";

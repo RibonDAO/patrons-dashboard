@@ -9,7 +9,7 @@ export const Container = styled.div`
 `;
 
 export const Data = styled.div<{
-  color: string;
+  color?: string;
 }>`
   ${defaultHeadingXxs}
 
