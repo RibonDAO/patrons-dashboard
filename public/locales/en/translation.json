@@ -15,7 +15,11 @@
       "title": "Engagement",
       "totalDonors": "People donated your gift tickets",
       "donationsPerPerson": "Donations per person (on average)",
-      "firstGiftText": "Your gift allowed nearly <strong>{{amount}}</strong> people to donate for the first time"
+      "firstGiftText": "Your gift allowed nearly <strong>{{amount}}</strong> people to donate for the first time",
+      "modalFirstTime": {
+        "title": "Where does this number come from?",
+        "description": "Internal research showed that on average <strong>40%</strong> of our users made the first donation of their lives through Ribon's plataform."
+      }
     },
     "giftBoostSection":{
       "modalFee": {

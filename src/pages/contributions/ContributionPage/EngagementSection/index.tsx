@@ -35,8 +35,8 @@ function EngagementSection({
   return (
     <Card border backgroundColor="transparent">
       <ModalDialog
-        title={t("modalFee.title")}
-        description={parse(t("modalFee.description"))}
+        title={t("modalFirstTime.title")}
+        description={parse(t("modalFirstTime.description"))}
         type="info"
         visible={firstTimeTooltipVisible}
         setVisible={setFirstTimeTooltipVisible}
