@@ -3,10 +3,12 @@ import ReactModal from "react-modal";
 
 export const BlankModal = styled(ReactModal)`
   width: 100%;
-  max-width: 360px;
   padding: ${({ theme }) => theme.spacing(16)};
   border-radius: 16px;
   background-color: #fff;
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    max-width: 360px;
+  }
 `;
 
 export const Modal = styled(BlankModal)`
