@@ -97,7 +97,13 @@ function GiftBoostSection({
           </S.IconContainer>
         </S.DataContainer>
         <S.DataContainerSmallText>
-          <Data data={ribonFee} label={t("ribonFee")} color={neutral[700]} />
+          <Data
+            data={parse(
+              `${ribonFee} <span class="fee-percentage">(≈10%)</span>`,
+            )}
+            label={t("ribonFee")}
+            color={neutral[700]}
+          />
           <S.IconContainer
             onClick={() => {
               setRibonFeeTooltipVisible(true);

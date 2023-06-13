@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {
   defaultBodyMdSemibold,
   defaultBodyXsMedium,
+  defaultBodyXsRegular,
 } from "styles/typography/default";
 
 export const Container = styled.div`
@@ -36,6 +37,11 @@ export const DataContainerSmallText = styled.div`
 
   p {
     ${defaultBodyXsMedium}
+  }
+
+  .fee-percentage {
+    color: ${({ theme }) => theme.colors.neutral[600]};
+    ${defaultBodyXsRegular}
   }
 `;
 
