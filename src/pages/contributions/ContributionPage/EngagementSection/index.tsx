@@ -6,6 +6,8 @@ import Data from "components/moleculars/Data";
 import Subtitle from "components/moleculars/Subtitle";
 import Icon from "components/atomics/Icon";
 import parse from "html-react-parser";
+import ModalDialog from "components/moleculars/modals/ModalDialog";
+import { useState } from "react";
 import * as S from "./styles";
 
 type Props = {
@@ -22,6 +24,7 @@ function EngagementSection({
     keyPrefix: "contributions.engagementSection",
   });
   const { brand, neutral } = theme.colors;
+  const [firstTimeTooltipVisible, setFirstTimeTooltipVisible] = useState(false);
 
   const icon = {
     name: "group",
@@ -31,6 +34,13 @@ function EngagementSection({
 
   return (
     <Card border backgroundColor="transparent">
+      <ModalDialog
+        title={t("modalFee.title")}
+        description={parse(t("modalFee.description"))}
+        type="info"
+        visible={firstTimeTooltipVisible}
+        setVisible={setFirstTimeTooltipVisible}
+      />
       <S.Container>
         <S.TitleContainer>
           <Title
@@ -71,7 +81,13 @@ function EngagementSection({
                   secondaryColor={brand.tertiary[25]}
                 />
               </S.SubtitleContainer>
-              <Icon name="info" size="16px" color={neutral[600]} />
+              <S.IconContainer
+                onClick={() => {
+                  setFirstTimeTooltipVisible(true);
+                }}
+              >
+                <Icon name="info" size="16px" color={neutral[600]} />
+              </S.IconContainer>
             </S.InnerCardContainer>
           </Card>
         </S.TooltipCardContainer>

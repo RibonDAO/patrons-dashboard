@@ -11,7 +11,12 @@ import ModalDialog from ".";
 describe("ModalDialog", () => {
   it("should render without error", () => {
     renderComponent(
-      <ModalDialog visible title="title of modal" description="modal" />,
+      <ModalDialog
+        visible
+        title="title of modal"
+        description="modal"
+        setVisible={() => {}}
+      />,
     );
 
     expectTextToBeInTheDocument("title of modal");
@@ -22,6 +27,7 @@ describe("ModalDialog", () => {
     renderComponent(
       <ModalDialog
         visible={false}
+        setVisible={() => {}}
         title="title of modal"
         description="modal"
       />,
@@ -39,6 +45,7 @@ describe("ModalDialog", () => {
         title="title of modal"
         description="modal"
         primaryButton={{ text: "Button", onClick }}
+        setVisible={() => {}}
       />,
     );
 
@@ -55,6 +62,7 @@ describe("ModalDialog", () => {
         title="title of modal"
         description="modal"
         secondaryButton={{ text: "Button", onClick }}
+        setVisible={() => {}}
       />,
     );
 
@@ -71,6 +79,7 @@ describe("ModalDialog", () => {
         description="modal"
         type="error"
         primaryButton={{ text: "Button" }}
+        setVisible={() => {}}
       />,
     );
 
@@ -100,6 +109,7 @@ describe("ModalDialog", () => {
         description="modal"
         type="warning"
         primaryButton={{ text: "Button" }}
+        setVisible={() => {}}
       />,
     );
 
@@ -129,6 +139,7 @@ describe("ModalDialog", () => {
         description="modal"
         type="info"
         primaryButton={{ text: "Button" }}
+        setVisible={() => {}}
       />,
     );
 
