@@ -91,6 +91,7 @@ function GiftBoostSection({
             onClick={() => {
               setAmountToCauseTooltipVisible(true);
             }}
+            aria-label="tooltip values transparency"
           >
             <Icon name="info" size="16px" color={neutral[600]} />
           </S.IconContainer>
@@ -101,6 +102,7 @@ function GiftBoostSection({
             onClick={() => {
               setRibonFeeTooltipVisible(true);
             }}
+            aria-label="tooltip ribon fees transparency"
           >
             <Icon name="info" size="16px" color={neutral[600]} />
           </S.IconContainer>
