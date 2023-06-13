@@ -49,3 +49,7 @@ export const SubtitleContainer = styled.div`
   margin-right: ${({ theme }) => theme.spacing(18)};
   word-wrap: break-word;
 `;
+
+export const IconContainer = styled.div`
+  cursor: pointer;
+`;

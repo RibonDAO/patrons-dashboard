@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { theme } from "@ribon.io/shared/styles";
 import Icon from "components/atomics/Icon";
 import useBreakpoint from "hooks/useBreakpoint";
@@ -7,7 +7,8 @@ import * as S from "./styles";
 import { defaultCustomStyles } from "../defaultCustomStyles";
 
 export type Props = {
-  visible?: boolean;
+  visible: boolean;
+  setVisible: (visible: boolean) => void;
   type?: string;
   icon?: string;
   iconColor?: string;
@@ -20,6 +21,7 @@ export type Props = {
 
 function ModalDialog({
   visible = false,
+  setVisible,
   title = null,
   description = null,
   primaryButton = null,
@@ -29,12 +31,10 @@ function ModalDialog({
   icon,
   iconColor,
 }: Props): JSX.Element {
-  const [isVisible, setIsVisible] = useState(visible);
-
   const { isMobile } = useBreakpoint();
 
   const handleCloseModal = () => {
-    setIsVisible(false);
+    setVisible(false);
   };
 
   const modalIcon = () => {
@@ -101,7 +101,7 @@ function ModalDialog({
 
   return (
     <S.Container
-      isOpen={isVisible}
+      isOpen={visible}
       onRequestClose={handleCloseModal}
       style={{
         ...defaultCustomStyles,
