@@ -64,7 +64,7 @@ function GiftBoostSection({
           <Title
             title={t("title")}
             icon={icon}
-            secondaryColor={brand.tertiary[50]}
+            secondaryColor={brand.secondary[50]}
           />
         </S.TitleContainer>
         <S.DataContainer>
