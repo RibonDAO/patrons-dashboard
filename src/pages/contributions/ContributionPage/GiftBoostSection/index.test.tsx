@@ -1,8 +1,8 @@
 import { renderComponent } from "config/testUtils/renders";
 import GiftBoostSection from "pages/contributions/ContributionPage/GiftBoostSection/index";
 import { expectTextToBeInTheDocument } from "config/testUtils/expects";
-import {clickOn} from "config/testUtils";
-import {screen} from "@testing-library/react";
+import { clickOn } from "config/testUtils";
+import { screen } from "@testing-library/react";
 
 describe("GiftBoostSection", () => {
   beforeEach(() => {
@@ -29,17 +29,17 @@ describe("GiftBoostSection", () => {
   });
 
   it("show the amount to cause modal correctly", () => {
-    const tooltip = screen.getByLabelText("tooltip values transparency")
-    clickOn(tooltip)
+    const tooltip = screen.getByLabelText("tooltip values transparency");
+    clickOn(tooltip);
 
-    expectTextToBeInTheDocument("Initial gift")
-    expectTextToBeInTheDocument("$100")
+    expectTextToBeInTheDocument("Initial gift");
+    expectTextToBeInTheDocument("$100");
   });
 
   it("show the ribon fees modal correctly", () => {
-    const tooltip = screen.getByLabelText("tooltip ribon fees transparency")
-    clickOn(tooltip)
+    const tooltip = screen.getByLabelText("tooltip ribon fees transparency");
+    clickOn(tooltip);
 
-    expectTextToBeInTheDocument("How Ribon’s fee works")
+    expectTextToBeInTheDocument("How Ribon’s fee works");
   });
 });
