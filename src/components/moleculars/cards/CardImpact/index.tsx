@@ -4,7 +4,7 @@ import * as S from "./styles";
 export type Props = {
   logo: string;
   image: string;
-  title: string | number;
+  title: string;
   data: string;
   label?: string;
   color?: string;
@@ -25,8 +25,9 @@ function CardImpact({
       <S.CardContainer>
         <S.Logo src={logo} />
         <S.Title>{title}</S.Title>
-        <Data data={data} label={label} color={color} />
-        {description && <S.Label>{description}</S.Label>}
+        <Data data={data} color={color} />
+        {label && <S.Label>{label}</S.Label>}
+        {description && <S.Description>{description}</S.Description>}
       </S.CardContainer>
     </S.Container>
   );

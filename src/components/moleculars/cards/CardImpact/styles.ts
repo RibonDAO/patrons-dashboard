@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { defaultBodyXsRegular } from "styles/typography/default";
+import {
+  defaultBodySmRegular,
+  defaultBodySmSemibold,
+  defaultBodyXsRegular,
+} from "styles/typography/default";
 
 export const Container = styled.div`
   max-width: 304px;
@@ -34,17 +38,24 @@ export const Image = styled.img`
 `;
 
 export const Text = styled.p`
-  ${defaultBodyXsRegular}
+  ${defaultBodyXsRegular};
 
   margin-top: ${({ theme }) => theme.spacing(8)};
   color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
-export const Title = styled.span`
+export const Title = styled.h1`
+  ${defaultBodySmSemibold};
   margin-top: ${({ theme }) => theme.spacing(8)};
-  color: ${({ theme }) => theme.colors.brand.primary[800]};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const Label = styled.span`
-  ${defaultBodyXsRegular}
+  ${defaultBodySmSemibold};
+  color: ${({ theme }) => theme.colors.neutral[800]};
+`;
+
+export const Description = styled.p`
+  ${defaultBodySmRegular};
+  color: ${({ theme }) => theme.colors.neutral[600]};
 `;

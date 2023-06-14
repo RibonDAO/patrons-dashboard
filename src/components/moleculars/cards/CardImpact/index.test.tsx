@@ -5,7 +5,7 @@ import CardImpact from ".";
 describe("CardImpact", () => {
   it("should render without error", () => {
     renderComponent(
-      <CardImpact logo="" image="" data="" title={0} description="texto" />,
+      <CardImpact logo="" image="" data="" title="title" description="texto" />,
     );
 
     expectTextToBeInTheDocument("texto");
