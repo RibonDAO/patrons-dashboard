@@ -20,7 +20,6 @@ export const CardContainer = styled.div`
   padding: ${({ theme }) => theme.spacing(24)};
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(8)};
 `;
 
 export const Logo = styled.img`
@@ -61,4 +60,9 @@ export const Label = styled.span`
 export const Description = styled.p`
   ${defaultBodySmRegular};
   color: ${({ theme }) => theme.colors.neutral[600]};
+  margin-top: ${({ theme }) => theme.spacing(4)};
+`;
+
+export const DataContainer = styled.div`
+  margin: ${({ theme }) => theme.spacing(8, 0, 8)};
 `;

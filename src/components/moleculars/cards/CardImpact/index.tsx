@@ -25,7 +25,9 @@ function CardImpact({
       <S.CardContainer>
         <S.Logo src={logo} />
         <S.Title>{title}</S.Title>
-        <Data data={data} color={color} />
+        <S.DataContainer>
+          <Data data={data} color={color} />
+        </S.DataContainer>
         {label && <S.Label>{label}</S.Label>}
         {description && <S.Description>{description}</S.Description>}
       </S.CardContainer>
