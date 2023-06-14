@@ -1,7 +1,7 @@
 import * as S from "./styles";
 
 export type Props = {
-  data: string;
+  data: string | JSX.Element | JSX.Element[];
   label: string;
   color: string;
 };

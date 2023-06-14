@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import {
+  defaultBodyMdSemibold,
+  defaultBodyXsMedium,
+  defaultBodyXsRegular,
+} from "styles/typography/default";
 
 export const Container = styled.div`
   width: 100%;
@@ -13,6 +18,31 @@ export const TitleContainer = styled.div`
 
 export const DataContainer = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing(16)};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const DataContainerSmallText = styled.div`
+  margin-bottom: ${({ theme }) => theme.spacing(16)};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  h1 {
+    ${defaultBodyMdSemibold}
+  }
+
+  p {
+    ${defaultBodyXsMedium}
+  }
+
+  .fee-percentage {
+    color: ${({ theme }) => theme.colors.neutral[600]};
+    ${defaultBodyXsRegular}
+  }
 `;
 
 export const TooltipCardContainer = styled.div`
@@ -52,7 +82,7 @@ export const SubtitleContainer = styled.div`
 
 export const IconContainer = styled.div`
   cursor: pointer;
-  background-color: ${({ theme }) => theme.colors.neutral[100]};
+  background-color: ${({ theme }) => theme.colors.neutral[25]};
   padding: 4px;
   display: flex;
   align-items: center;
