@@ -1,18 +1,22 @@
 import { useTranslation } from "react-i18next";
 import { theme } from "@ribon.io/shared/styles";
 import Title from "components/moleculars/Title";
-import parse from "html-react-parser";
 import CardImpact from "components/moleculars/cards/CardImpact";
+import { Contribution, ContributionDirectImpact } from "@ribon.io/shared/types";
+import { useContributionDirectImpact } from "hooks/apiHooks/useContributionDirectImpact";
+import parse from "html-react-parser";
+import { formattedImpactText } from "lib/formatText";
 import * as S from "./styles";
 
 type Props = {
-  impacts?: any[];
+  contribution: Contribution;
 };
-function ImpactSection({ impacts }: Props): JSX.Element {
+function ImpactSection({ contribution }: Props): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "contributions.impactSection",
   });
   const { brand } = theme.colors;
+  const { directImpact } = useContributionDirectImpact(contribution);
 
   const icon = {
     name: "group",
@@ -35,14 +39,14 @@ function ImpactSection({ impacts }: Props): JSX.Element {
         {parse(t("directImpactSubtitle"))}
       </S.DirectImpactSectionSubtitle>
       <S.ImpactCardsContainer>
-        {impacts?.map((impact) => (
+        {directImpact?.map((impact: ContributionDirectImpact) => (
           <CardImpact
             logo={impact.nonProfit.logo}
-            image={impact.nonProfit.supportImage}
-            data={impact.totalAmount}
+            image={impact.nonProfit.backgroundImage}
+            data={impact.totalAmountDonated}
             label={t("cardImpactLabel")}
             title={impact.nonProfit.name}
-            description={impact.text}
+            description={formattedImpactText(impact.formattedImpact)}
           />
         ))}
       </S.ImpactCardsContainer>

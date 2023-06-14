@@ -209,7 +209,7 @@ module.exports = function (plop) {
     actions: [
       {
         type: "add",
-        path: "../src/services/api/{{camelCase name}}Api/index.ts",
+        path: "../src/services/api/{{camelCase name}}Api/index.tsx",
         templateFile: "templates/serviceAPI.ts.hbs",
       },
       {

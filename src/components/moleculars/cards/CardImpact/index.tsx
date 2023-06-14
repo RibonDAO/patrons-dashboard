@@ -8,7 +8,7 @@ export type Props = {
   data: string;
   label?: string;
   color?: string;
-  description?: string;
+  description?: string | JSX.Element | JSX.Element[];
 };
 function CardImpact({
   logo,
