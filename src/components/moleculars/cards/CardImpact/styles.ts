@@ -6,11 +6,14 @@ import {
 } from "styles/typography/default";
 
 export const Container = styled.div`
-  max-width: 304px;
   border: 1px solid;
   border-color: ${({ theme }) => theme.colors.neutral[100]};
   border-radius: 4px;
   background: ${(props) => props.theme.colors.neutral10};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    max-width: 304px;
+  }
 `;
 
 export const CardContainer = styled.div`
