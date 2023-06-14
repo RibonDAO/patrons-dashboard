@@ -41,6 +41,7 @@ function ImpactSection({ contribution }: Props): JSX.Element {
       <S.ImpactCardsContainer>
         {directImpact?.map((impact: ContributionDirectImpact) => (
           <CardImpact
+            key={impact.nonProfit.id}
             logo={impact.nonProfit.logo}
             image={impact.nonProfit.backgroundImage}
             data={impact.totalAmountDonated}
