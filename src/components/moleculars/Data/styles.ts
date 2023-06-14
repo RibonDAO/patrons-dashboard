@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: block;
 `;
 
-export const Data = styled.div<{
+export const Data = styled.h1<{
   color?: string;
 }>`
   ${defaultHeadingXxs}
@@ -16,7 +16,7 @@ export const Data = styled.div<{
   color: ${(props) => props.color || props.theme.colors.neutral[700]};
 `;
 
-export const Label = styled.div`
+export const Label = styled.p`
   ${defaultBodySmMedium}
 
   color: ${({ theme }) => theme.colors.neutral[600]};

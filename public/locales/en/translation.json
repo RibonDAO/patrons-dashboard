@@ -25,7 +25,13 @@
       "modalFee": {
         "title": "How Ribon’s fee works",
         "description": "Your gift is either <b>100%</b> donated or <b>boosted</b> before being donated (we only charge a 10% fee on the added value)."
-      }
+      },
+      "title": "Gift Boost",
+      "contributionsInspiredByYou": "Contribution inspired by yourself",
+      "increaseAmount": "Increase of your initial gift",
+      "amountToCause": "Amount that goes to the cause",
+      "ribonFee": "Ribon’s fee",
+      "initialGift": "Initial gift"
     }
   }
 }

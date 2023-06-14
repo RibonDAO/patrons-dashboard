@@ -38,6 +38,8 @@ function ModalDialog({
   };
 
   const modalIcon = () => {
+    if (icon) return icon;
+
     switch (type) {
       case "error":
         return "report";
@@ -64,6 +66,8 @@ function ModalDialog({
   };
 
   const themeColor = () => {
+    if (iconColor) return iconColor;
+
     switch (type) {
       case "error":
         return theme.colors.feedback.error[600];
@@ -121,9 +125,9 @@ function ModalDialog({
       />
       {(type || icon) && (
         <Icon
-          name={type ? modalIcon() : icon ?? ""}
-          color={type ? themeColor() : iconColor}
-          className={type ? modalIcon() : icon}
+          name={modalIcon()}
+          color={themeColor()}
+          className={modalIcon()}
           size="40px"
         />
       )}
