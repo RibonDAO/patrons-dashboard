@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import parse from "html-react-parser";
 import ModalDialog from "components/moleculars/modals/ModalDialog";
 import { useState } from "react";
-import Card from "components/moleculars/Card";
+import Card from "components/moleculars/cards/Card";
 import Title from "components/moleculars/Title";
 import Data from "components/moleculars/Data";
 import { theme } from "@ribon.io/shared/styles";

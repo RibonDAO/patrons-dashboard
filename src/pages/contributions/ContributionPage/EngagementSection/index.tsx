@@ -1,4 +1,4 @@
-import Card from "components/moleculars/Card";
+import Card from "components/moleculars/cards/Card";
 import Title from "components/moleculars/Title";
 import { useTranslation } from "react-i18next";
 import { theme } from "@ribon.io/shared/styles";
