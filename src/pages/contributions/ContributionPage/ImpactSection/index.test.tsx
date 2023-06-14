@@ -1,17 +1,37 @@
 import { renderComponent } from "config/testUtils/renders";
-import EngagementSection from "pages/contributions/ContributionPage/EngagementSection/index";
 import { expectTextToBeInTheDocument } from "config/testUtils/expects";
+import { Contribution } from "@ribon.io/shared/types";
+import { mockRequest } from "config/testUtils/test-helper";
+import { nonProfitFactory } from "@ribon.io/shared/config";
+import { waitForPromises } from "config/testUtils";
+import ImpactSection from ".";
 
-describe("EngagementSection", () => {
+describe("ImpactSection", () => {
+  const contribution = { id: 1 } as Contribution;
+  const formattedImpact = ["1 month", "of water for", "10 people"];
+  mockRequest("patrons/v1/contributions/1/impacts", {
+    payload: [
+      {
+        nonProfit: nonProfitFactory(),
+        formattedImpact,
+        totalAmountDonated: "$1,000",
+      },
+    ],
+  });
+
+  beforeEach(async () => {
+    renderComponent(<ImpactSection contribution={contribution} />);
+    await waitForPromises();
+  });
+
   it("renders without error", () => {
-    renderComponent(
-      <EngagementSection
-        firstTimeDonors="16,000"
-        donationsPerPerson="2,0"
-        totalDonors="80,000"
-      />,
-    );
+    expectTextToBeInTheDocument("Your impact");
+  });
 
-    expectTextToBeInTheDocument("Engagement");
+  it("renders the direct impact section", () => {
+    formattedImpact.forEach((text) => {
+      expectTextToBeInTheDocument(text);
+    });
+    expectTextToBeInTheDocument("$1,000");
   });
 });
