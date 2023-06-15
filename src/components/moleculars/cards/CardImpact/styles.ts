@@ -12,7 +12,7 @@ export const Container = styled.div`
   background: ${(props) => props.theme.colors.neutral10};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    max-width: 304px;
+    max-width: 400px;
   }
 `;
 
@@ -33,7 +33,8 @@ export const Logo = styled.img`
 
 export const Image = styled.img`
   width: 100%;
-  height: 120px;
+  min-height: 128px;
+  max-height: 142px;
   border-radius: 4px;
   display: block;
   object-fit: cover;

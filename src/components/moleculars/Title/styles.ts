@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { defaultHeadingXxs } from "styles/typography/default";
+import {
+  defaultBodyMdRegular,
+  defaultHeadingXxs,
+} from "styles/typography/default";
 
 export const Container = styled.div`
   display: flex;
@@ -8,8 +11,13 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Title = styled.div`
+export const Title = styled.h1`
   ${defaultHeadingXxs}
+`;
+
+export const Subtitle = styled.p`
+  ${defaultBodyMdRegular}
+  color: ${({ theme }) => theme.colors.neutral[700]};
 `;
 export const IconBox = styled.div<{
   secondaryColor: string;
@@ -23,3 +31,5 @@ export const IconBox = styled.div<{
   background: ${(props) =>
     props.secondaryColor || props.theme.colors.neutral10};
 `;
+
+export const TextContainer = styled.div``;

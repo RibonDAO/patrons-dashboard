@@ -4,6 +4,7 @@ import { defaultBodySmMedium } from "styles/typography/default";
 export const Container = styled.div`
   padding-right: 228px;
   padding-left: 228px;
+  margin-bottom: ${({ theme }) => theme.spacing(64)};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     padding-right: 16px;
