@@ -6,6 +6,7 @@ import { useContributions } from "hooks/apiHooks/useContributions";
 import { useEffect, useState } from "react";
 import { Contribution } from "@ribon.io/shared/types";
 import { AVG_FIRST_TIME_DONORS_PERCENTAGE } from "utils/constants";
+import ImpactSection from "pages/contributions/ContributionPage/ImpactSection";
 import EngagementSection from "./EngagementSection";
 import * as S from "./styles";
 import GiftStatusSection from "./GiftStatusSection";
@@ -73,7 +74,11 @@ function ContributionPage(): JSX.Element {
             initialGift={currentContribution.stats.initialAmount.toString()}
           />
         )}
+        <S.Divider />
       </S.Section>
+      {currentContribution && (
+        <ImpactSection contribution={currentContribution} />
+      )}
     </S.Container>
   );
 }
