@@ -45,6 +45,7 @@ function ImpactSection({ contribution }: Props): JSX.Element {
             logo={impact.nonProfit.logo}
             image={impact.nonProfit.backgroundImage}
             data={impact.totalAmountDonated}
+            color={brand.primary[900]}
             label={t("cardImpactLabel")}
             title={impact.nonProfit.name}
             description={formattedImpactText(impact.formattedImpact)}
