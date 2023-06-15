@@ -19,7 +19,7 @@ function ImpactSection({ contribution }: Props): JSX.Element {
   const { directImpact } = useContributionDirectImpact(contribution);
 
   const icon = {
-    name: "group",
+    name: "psychiatry",
     color: brand.primary[600],
     size: "24px",
   };
