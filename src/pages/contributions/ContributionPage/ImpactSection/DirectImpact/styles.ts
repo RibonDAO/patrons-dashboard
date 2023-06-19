@@ -4,15 +4,6 @@ import {
   defaultBodySmRegular,
 } from "styles/typography/default";
 
-export const Container = styled.div`
-  width: 100%;
-  margin-top: ${({ theme }) => theme.spacing(32)};
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-`;
-
 export const DirectImpactSectionTitle = styled.h1`
   ${defaultBodyLgSemibold}
 

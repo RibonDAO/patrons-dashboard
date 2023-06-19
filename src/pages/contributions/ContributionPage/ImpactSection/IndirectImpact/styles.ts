@@ -13,14 +13,14 @@ export const Container = styled.div`
   justify-content: flex-start;
 `;
 
-export const DirectImpactSectionTitle = styled.h1`
+export const IndirectImpactSectionTitle = styled.h1`
   ${defaultBodyLgSemibold}
 
   margin-top: ${({ theme }) => theme.spacing(32)};
   color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
-export const DirectImpactSectionSubtitle = styled.h1`
+export const IndirectImpactSectionSubtitle = styled.h1`
   ${defaultBodySmRegular}
 
   margin-bottom: ${({ theme }) => theme.spacing(16)};
