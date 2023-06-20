@@ -19,7 +19,7 @@ Default.args = {
     color: theme.colors.neutral[900],
     size: "medium",
   },
-  text:"Let's talk about questions, ideas, refunds or anything else.",
+  text: "Let's talk about questions, ideas, refunds or anything else.",
   cardBackground: "https://picsum.photos/200/300",
   icon: {
     name: "support_agent",
