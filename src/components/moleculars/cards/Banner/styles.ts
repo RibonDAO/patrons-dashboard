@@ -23,6 +23,12 @@ export const Container = styled.div<{
   background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
   background-size: cover;
   box-shadow: 0 4px 12px 0 ${({ theme }) => theme.colors.defaultShadow};
+
+  ${(props) =>
+    props.flexDirection === "row" &&
+    css`
+      justify-content: space-between;
+    `}
 `;
 
 export const Content = styled.div`
@@ -100,8 +106,6 @@ export const CardButton = styled(Button)`
 
 export const ArrowContainer = styled.div`
   display: flex;
-  width: 10%;
-  margin-left: ${({ theme }) => theme.spacing(4)};
   flex-direction: row;
   justify-self: center;
   position: relative;
