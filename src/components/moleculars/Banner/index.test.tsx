@@ -28,6 +28,6 @@ describe("Banner", () => {
         <Banner text="Banner" title={{ text: "title", color: "#000000" }} />,
       );
       expect(screen.getByText("title")).toHaveStyle("color: #000000;");
-    });   
+    });
   });
 });
