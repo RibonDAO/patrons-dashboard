@@ -1,3 +1,4 @@
+import { theme } from "@ribon.io/shared/styles";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Banner, { Props } from ".";
 
@@ -13,6 +14,16 @@ const Template: ComponentStory<typeof Banner> = function (args: Props) {
 export const Default = Template.bind({});
 
 Default.args = {
-  text: "Banner",
+  title: {
+    text: "User Support",
+    color: theme.colors.neutral[900],
+    size: "medium",
+  },
+  text:"Let's talk about questions, ideas, refunds or anything else.",
   cardBackground: "https://picsum.photos/200/300",
+  icon: {
+    name: "support-agent",
+    withCircle: true,
+    color: theme.colors.neutral[900],
+  },
 };
