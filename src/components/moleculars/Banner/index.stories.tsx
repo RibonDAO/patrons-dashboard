@@ -22,7 +22,7 @@ Default.args = {
   text:"Let's talk about questions, ideas, refunds or anything else.",
   cardBackground: "https://picsum.photos/200/300",
   icon: {
-    name: "support-agent",
+    name: "support_agent",
     withCircle: true,
     color: theme.colors.neutral[900],
   },
