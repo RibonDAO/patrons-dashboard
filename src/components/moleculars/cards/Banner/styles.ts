@@ -5,7 +5,7 @@ import {
   defaultBodySmSemibold,
   defaultHeadingXxs,
 } from "styles/typography/default";
-import Button from "../../atomics/buttons/Button";
+import Button from "../../../atomics/buttons/Button";
 
 export const Container = styled.div<{
   backgroundImage?: string;
