@@ -45,12 +45,12 @@
         "title": "Indirect impact",
         "subtitle": "Your gift <b>inspired</b> new people to contribute with the cause as well.",
         "card": {
-          "title": "The boost of {amount} of your gift was raised by",
+          "title": "The boost of <span>{{boost}}</span> of your gift was raised by",
           "newContributors": "New contributors",
           "patrons": "Patrons",
-          "ribonsAction": {
-            "title": "Now it’s up to Ribon!",
-            "subtitle": "Our job is to make the best with the $3,000 boost, as we did with your gift. We will:",
+          "ribonActions": {
+            "subtitle": "Now it’s up to Ribon!",
+            "description": "Our job is to make the best with the {{boost}} boost, as we did with your gift. We will:",
             "action1": "Engage new donors with donation tickets",
             "action2": "Designate the donations to vieified high impact NGOs",
             "action3": "Inspire new donors to contribute as well"

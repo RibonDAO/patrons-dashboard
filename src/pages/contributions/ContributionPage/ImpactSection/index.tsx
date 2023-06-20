@@ -24,7 +24,7 @@ function ImpactSection({ contribution }: Props): JSX.Element {
   };
 
   return (
-    <S.Container>
+    <S.ImpactContainer>
       <Title
         title={t("title")}
         subtitle={t("subtitle")}
@@ -32,8 +32,12 @@ function ImpactSection({ contribution }: Props): JSX.Element {
         secondaryColor={brand.primary[50]}
       />
       {directImpact && <DirectImpactSection directImpact={directImpact} />}
-      <IndirectImpactSection amount="$3000" newContributors="300" patrons="2" />
-    </S.Container>
+      <IndirectImpactSection
+        boost={contribution.stats.boostAmount}
+        newContributors={contribution.stats.boostNewContributors}
+        newPatrons={contribution.stats.boostNewPatrons}
+      />
+    </S.ImpactContainer>
   );
 }
 

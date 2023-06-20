@@ -7,9 +7,9 @@ describe("ImpactSection", () => {
   beforeEach(async () => {
     renderComponent(
       <IndirectImpactSection
-        amount="$3,000"
-        newContributors="300"
-        patrons="2"
+        boost="$3,000"
+        newContributors={300}
+        newPatrons={2}
       />,
     );
     await waitForPromises();
@@ -19,7 +19,7 @@ describe("ImpactSection", () => {
     expectTextToBeInTheDocument("Indirect impact");
   });
 
-  it("renders the direct impact section", () => {
-    expectTextToBeInTheDocument("$3,000");
+  it("renders the indirect impact section", () => {
+    expectTextToBeInTheDocument("300");
   });
 });

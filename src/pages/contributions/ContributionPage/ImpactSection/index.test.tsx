@@ -7,7 +7,14 @@ import { waitForPromises } from "config/testUtils";
 import ImpactSection from ".";
 
 describe("ImpactSection", () => {
-  const contribution = { id: 1 } as Contribution;
+  const contribution = {
+    id: 1,
+    stats: {
+      boostAmount: "$3,000",
+      boostNewContributors: 300,
+      boostNewPatrons: 2,
+    },
+  } as Contribution;
   const formattedImpact = ["1 month", "of water for", "10 people"];
   mockRequest("patrons/v1/contributions/1/impacts", {
     payload: [

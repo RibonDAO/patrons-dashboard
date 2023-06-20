@@ -4,16 +4,24 @@ import * as S from "./styles";
 
 export type Props = {
   text: string | JSX.Element | JSX.Element[];
+  color?: string;
   icon: IconProps;
   secondaryColor: string;
+  position?: "center" | "start";
 };
-function Subtitle({ text, icon, secondaryColor }: Props): JSX.Element {
+function Subtitle({
+  text,
+  color,
+  icon,
+  secondaryColor,
+  position,
+}: Props): JSX.Element {
   return (
-    <S.Container>
-      <S.IconBox secondaryColor={secondaryColor}>
+    <S.Container position={position}>
+      <S.IconBox secondaryColor={secondaryColor} position={position}>
         <Icon {...icon} />
       </S.IconBox>
-      <S.Subtitle>{text}</S.Subtitle>
+      <S.Subtitle color={color}>{text}</S.Subtitle>
     </S.Container>
   );
 }

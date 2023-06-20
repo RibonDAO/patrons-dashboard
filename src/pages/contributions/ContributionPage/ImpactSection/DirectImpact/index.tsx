@@ -17,11 +17,9 @@ function DirectImpactSection({ directImpact }: Props): JSX.Element {
 
   return (
     <>
-      <S.DirectImpactSectionTitle>
-        {t("directImpactTitle")}
-      </S.DirectImpactSectionTitle>
+      <S.DirectImpactSectionTitle>{t("title")}</S.DirectImpactSectionTitle>
       <S.DirectImpactSectionSubtitle>
-        {parse(t("directImpactSubtitle"))}
+        {parse(t("subtitle"))}
       </S.DirectImpactSectionSubtitle>
       <S.ImpactCardsContainer>
         {directImpact?.map((impact: ContributionDirectImpact) => (

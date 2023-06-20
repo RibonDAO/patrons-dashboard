@@ -20,7 +20,7 @@ describe("ImpactSection", () => {
   });
 
   it("renders without error", () => {
-    expectTextToBeInTheDocument("Your impact");
+    expectTextToBeInTheDocument("Direct impact");
   });
 
   it("renders the direct impact section", () => {
