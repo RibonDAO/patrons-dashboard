@@ -29,13 +29,6 @@ export const CurrentPatronContext = createContext<ICurrentPatronContext>(
 export const CURRENT_PATRON_KEY = "CURRENT_PATRON_KEY";
 export const SHOW_MENU = "SHOW_MENU";
 
-// TODO: Remove this test patron
-export const TEST_PATRON: Patron = {
-  name: "Clara",
-  email: "clara@ribon",
-  id: "H932-91023L-123901",
-};
-
 function CurrentPatronProvider({ children }: Props) {
   function getPatronFromLocalStorage() {
     const patron = localStorage.getItem(CURRENT_PATRON_KEY);
