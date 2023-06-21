@@ -49,4 +49,21 @@ describe("useAuthentication", () => {
       });
     });
   });
+
+  describe("sendAuthenticationLink", () => {
+    const sendLinkSpy = jest.spyOn(authApi, "postSendAuthenticationEmail");
+    beforeEach(async () => {
+      const { hook } = renderHook(() => useAuthentication());
+      current = hook.result.current;
+      await waitForPromises();
+    });
+
+    it("calls the send link method with right params", async () => {
+      await act(async () => {
+        await current.sendAuthenticationLink({ email: "email@test.com" });
+      });
+
+      expect(sendLinkSpy).toHaveBeenCalledWith("email@test.com");
+    });
+  });
 });
