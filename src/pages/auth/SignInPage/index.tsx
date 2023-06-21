@@ -79,6 +79,7 @@ function SignInPage(): JSX.Element {
               id="email"
               type="email"
               placeholder="email"
+              value={email}
               onChange={onEmailInputChange}
               required
             />
