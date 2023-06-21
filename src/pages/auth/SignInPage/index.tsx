@@ -11,6 +11,7 @@ import Button from "components/atomics/buttons/Button";
 import RibonIcon from "assets/icons/ribon-icon.svg";
 import { isValidEmail } from "lib/validators";
 import ModalDialog from "components/moleculars/modals/ModalDialog";
+import { logError } from "services/crashReport";
 import * as S from "./styles";
 
 function SignInPage(): JSX.Element {
@@ -43,7 +44,7 @@ function SignInPage(): JSX.Element {
 
           navigateTo("/contributions");
         } catch (error: any) {
-          console.error(error);
+          logError(error);
         } finally {
           setLoading(false);
         }
@@ -64,7 +65,7 @@ function SignInPage(): JSX.Element {
       setEmail("");
       setModalVisible(true);
     } catch (error: any) {
-      console.error(error);
+      logError(error);
     } finally {
       setLoading(false);
     }
