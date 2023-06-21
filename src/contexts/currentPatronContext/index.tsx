@@ -8,7 +8,6 @@ import React, {
   useState,
 } from "react";
 import { BigDonor as Patron } from "@ribon.io/shared/types";
-import { initializeApi } from "services/api";
 
 export interface ICurrentPatronContext {
   currentPatron: Patron | undefined;
@@ -28,13 +27,6 @@ export const CurrentPatronContext = createContext<ICurrentPatronContext>(
 
 export const CURRENT_PATRON_KEY = "CURRENT_PATRON_KEY";
 export const SHOW_MENU = "SHOW_MENU";
-
-// TODO: Remove this test patron
-export const TEST_PATRON: Patron = {
-  name: "Clara",
-  email: "clara@ribon",
-  id: "H932-91023L-123901",
-};
 
 function CurrentPatronProvider({ children }: Props) {
   function getPatronFromLocalStorage() {
@@ -67,7 +59,6 @@ function CurrentPatronProvider({ children }: Props) {
   useEffect(() => {
     setSignedIn(!!currentPatron);
     setPatronInLocalStorage();
-    initializeApi();
   }, [currentPatron]);
 
   const currentPatronObject: ICurrentPatronContext = useMemo(
