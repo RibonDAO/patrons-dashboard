@@ -7,6 +7,7 @@ export type IconProps = {
   size?: string;
   color?: string;
   className?: string;
+  withCircle?: boolean;
   onClick?: () => void;
 };
 
@@ -16,6 +17,7 @@ function Icon({
   size,
   className,
   onClick,
+  withCircle,
   ...props
 }: IconProps): JSX.Element {
   return (
@@ -26,6 +28,7 @@ function Icon({
       onClick={onClick}
       className={`${className} material-symbols-rounded`}
       data-testid={`icon-${name}`}
+      withCircle={withCircle}
     >
       {name}
     </S.Icon>
