@@ -5,6 +5,8 @@ import authApi from "services/api/authApi";
 import { REFRESH_TOKEN_KEY, TOKEN_KEY } from "utils/constants";
 import { useNavigate } from "react-router-dom";
 import { useCurrentPatron } from "contexts/currentPatronContext";
+import Loader from "components/atomics/Loader";
+import * as S from "./styles";
 
 function SignInPage(): JSX.Element {
   const { search } = useLocation();
@@ -27,19 +29,20 @@ function SignInPage(): JSX.Element {
           localStorage.setItem(TOKEN_KEY, token);
           localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
 
-          setTimeout(() => {
-            navigateTo("/contributions");
-          }, 1500);
+          navigateTo("/contributions");
         } catch (error: any) {
-          // navigateTo("/");
-          console.error(error);
+          navigateTo("/");
         }
       }
     }
 
     authenticate();
   }, []);
-  return <div />;
+  return (
+    <S.Container>
+      <Loader />
+    </S.Container>
+  );
 }
 
 export default SignInPage;
