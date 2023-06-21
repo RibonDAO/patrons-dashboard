@@ -1,38 +1,26 @@
 import { renderComponent } from "config/testUtils/renders";
 import { expectTextToBeInTheDocument } from "config/testUtils/expects";
-import { Contribution } from "@ribon.io/shared/types";
-import { mockRequest } from "config/testUtils/test-helper";
 import { nonProfitFactory } from "@ribon.io/shared/config";
 import { waitForPromises } from "config/testUtils";
-import ImpactSection from ".";
+import DirectImpactSection from ".";
 
 describe("ImpactSection", () => {
-  const contribution = {
-    id: 1,
-    stats: {
-      boostAmount: "$3,000",
-      boostNewContributors: 300,
-      boostNewPatrons: 2,
-    },
-  } as Contribution;
   const formattedImpact = ["1 month", "of water for", "10 people"];
-  mockRequest("patrons/v1/contributions/1/impacts", {
-    payload: [
-      {
-        nonProfit: nonProfitFactory(),
-        formattedImpact,
-        totalAmountDonated: "$1,000",
-      },
-    ],
-  });
+  const directImpact = [
+    {
+      nonProfit: nonProfitFactory(),
+      formattedImpact,
+      totalAmountDonated: "$1,000",
+    },
+  ];
 
   beforeEach(async () => {
-    renderComponent(<ImpactSection contribution={contribution} />);
+    renderComponent(<DirectImpactSection directImpact={directImpact} />);
     await waitForPromises();
   });
 
   it("renders without error", () => {
-    expectTextToBeInTheDocument("Your impact");
+    expectTextToBeInTheDocument("Direct impact");
   });
 
   it("renders the direct impact section", () => {
