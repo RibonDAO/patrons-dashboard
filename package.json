@@ -36,7 +36,7 @@
     "js-cookie": "^3.0.5",
     "lottie-colorify": "^0.8.0",
     "react": "^18.2.0",
-    "react-chartjs-2": "^4.3.1",
+    "react-chartjs-2": "^5.0.0",
     "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",
     "react-i18next": "^11.15.3",
