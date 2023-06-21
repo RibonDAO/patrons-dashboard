@@ -8,7 +8,6 @@ import React, {
   useState,
 } from "react";
 import { BigDonor as Patron } from "@ribon.io/shared/types";
-import { initializeApi } from "services/api";
 
 export interface ICurrentPatronContext {
   currentPatron: Patron | undefined;
@@ -60,7 +59,6 @@ function CurrentPatronProvider({ children }: Props) {
   useEffect(() => {
     setSignedIn(!!currentPatron);
     setPatronInLocalStorage();
-    initializeApi();
   }, [currentPatron]);
 
   const currentPatronObject: ICurrentPatronContext = useMemo(

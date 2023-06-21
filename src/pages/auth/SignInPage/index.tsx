@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import authApi from "services/api/authApi";
 import { REFRESH_TOKEN_KEY, TOKEN_KEY } from "utils/constants";
 import { useNavigate } from "react-router-dom";
-import {useCurrentPatron} from "contexts/currentPatronContext";
+import { useCurrentPatron } from "contexts/currentPatronContext";
 
 function SignInPage(): JSX.Element {
   const { search } = useLocation();
@@ -27,7 +27,9 @@ function SignInPage(): JSX.Element {
           localStorage.setItem(TOKEN_KEY, token);
           localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
 
-          navigateTo("/contributions");
+          setTimeout(() => {
+            navigateTo("/contributions");
+          }, 1500);
         } catch (error: any) {
           // navigateTo("/");
           console.error(error);
