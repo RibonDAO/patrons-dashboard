@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import extractUrlValue from "lib/extractUrlValue";
 import { useLocation } from "react-router";
 import authApi from "services/api/authApi";
@@ -6,18 +6,26 @@ import { REFRESH_TOKEN_KEY, TOKEN_KEY } from "utils/constants";
 import { useNavigate } from "react-router-dom";
 import { useCurrentPatron } from "contexts/currentPatronContext";
 import Loader from "components/atomics/Loader";
+import { useTranslation } from "react-i18next";
+import Button from "components/atomics/buttons/Button";
 import * as S from "./styles";
 
 function SignInPage(): JSX.Element {
   const { search } = useLocation();
   const navigateTo = useNavigate();
   const { setCurrentPatron } = useCurrentPatron();
+  const [loading, setLoading] = useState(false);
+  const { t } = useTranslation("translation", {
+    keyPrefix: "auth.signInPage",
+  });
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     async function authenticate() {
       const authToken = extractUrlValue("authToken", search);
       const id = extractUrlValue("id", search);
       if (id && authToken) {
+        setLoading(true);
         try {
           const response = await authApi.postAuthorizeFromAuthToken(
             authToken,
@@ -31,16 +39,57 @@ function SignInPage(): JSX.Element {
 
           navigateTo("/contributions");
         } catch (error: any) {
-          navigateTo("/");
+          console.error(error);
+        } finally {
+          setLoading(false);
         }
       }
     }
 
     authenticate();
   }, []);
+
+  const onEmailInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
   return (
     <S.Container>
-      <Loader />
+      {loading ? (
+        <Loader />
+      ) : (
+        <S.ContentContainer>
+          <S.FormContainer>
+            <S.Input
+              key="email"
+              name="email"
+              id="email"
+              type="email"
+              placeholder="email"
+              onChange={onEmailInputChange}
+              required
+            />
+
+            <Button
+              text={t("signInButton")}
+              onClick={() => {
+                console.log(email);
+              }}
+            />
+          </S.FormContainer>
+
+          <S.FooterText>
+            {t("footerStartText")}{" "}
+            <a href={t("termsLink")} target="_blank" rel="noreferrer">
+              {t("termsText")}
+            </a>
+            {t("footerEndText")}{" "}
+            <a href={t("privacyPolicyLink")} target="_blank" rel="noreferrer">
+              {t("privacyPolicyText")}
+            </a>
+          </S.FooterText>
+        </S.ContentContainer>
+      )}
     </S.Container>
   );
 }
