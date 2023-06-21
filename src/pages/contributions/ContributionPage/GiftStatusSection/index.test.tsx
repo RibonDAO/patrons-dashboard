@@ -15,6 +15,8 @@ describe("GiftStatusSection", () => {
       totalIncreasePercentage: 0,
       totalAmountToCause: 0,
       ribonFee: 0,
+      boostNewContributors: 0,
+      boostNewPatrons: 0
     },
   };
 
