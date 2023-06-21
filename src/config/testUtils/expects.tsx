@@ -23,7 +23,6 @@ export function expectFunctionNotToHaveBeenCalledWith(fn: any, value: any) {
 
 export function expectCookieToHaveBeenSet(key: string, value: string) {
   return expect(mockCookieSet).toHaveBeenCalledWith(key, value, {
-    httpOnly: true,
     sameSite: "strict",
     secure: true,
   });
