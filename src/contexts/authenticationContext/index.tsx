@@ -11,8 +11,17 @@ type authTokenProps = {
   onSuccess?: () => void;
   onError?: () => void;
 };
+
+type authenticationLinkProps = {
+  email: string;
+  onSuccess?: () => void;
+  onError?: () => void;
+};
 export interface IAuthenticationContext {
   signInByAuthToken: (signInByAuthTokenProps: authTokenProps) => void;
+  sendAuthenticationLink: (
+    sendAuthenticationLinkProps: authenticationLinkProps,
+  ) => void;
   accessToken: string | null;
   logout: () => void;
   loading: boolean;
@@ -56,6 +65,23 @@ function AuthenticationProvider({ children }: Props) {
     }
   }
 
+  async function sendAuthenticationLink({
+    email,
+    onSuccess,
+    onError,
+  }: authenticationLinkProps) {
+    setLoading(true);
+    try {
+      await authApi.postSendAuthenticationEmail(email);
+      if (onSuccess) onSuccess();
+    } catch (error: any) {
+      logError(error);
+      if (onError) onError();
+    } finally {
+      setLoading(false);
+    }
+  }
+
   function logout() {
     removeCookiesItem(TOKEN_KEY);
     removeCookiesItem(REFRESH_TOKEN_KEY);
@@ -66,6 +92,7 @@ function AuthenticationProvider({ children }: Props) {
       logout,
       accessToken,
       loading,
+      sendAuthenticationLink,
       signInByAuthToken,
     }),
     [accessToken],

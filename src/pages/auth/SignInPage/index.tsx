@@ -1,7 +1,6 @@
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import extractUrlValue from "lib/extractUrlValue";
 import { useLocation } from "react-router";
-import authApi from "services/api/authApi";
 import { useNavigate } from "react-router-dom";
 import Loader from "components/atomics/Loader";
 import { useTranslation } from "react-i18next";
@@ -9,25 +8,25 @@ import Button from "components/atomics/buttons/Button";
 import RibonIcon from "assets/icons/ribon-icon.svg";
 import { isValidEmail } from "lib/validators";
 import ModalDialog from "components/moleculars/modals/ModalDialog";
-import { logError } from "services/crashReport";
 import { useAuthentication } from "contexts/authenticationContext";
 import * as S from "./styles";
 
 function SignInPage(): JSX.Element {
   const { search } = useLocation();
   const navigateTo = useNavigate();
-  const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const { t } = useTranslation("translation", {
     keyPrefix: "auth.signInPage",
   });
   const [email, setEmail] = useState("");
-  const { signInByAuthToken } = useAuthentication();
+  const { signInByAuthToken, loading, sendAuthenticationLink } =
+    useAuthentication();
 
   useEffect(() => {
     async function authenticate() {
       const authToken = extractUrlValue("authToken", search);
       const id = extractUrlValue("id", search);
+
       if (id && authToken) {
         signInByAuthToken({
           authToken,
@@ -47,16 +46,13 @@ function SignInPage(): JSX.Element {
   };
 
   const handleSubmit = async () => {
-    setLoading(true);
-    try {
-      await authApi.postSendAuthenticationEmail(email);
-      setEmail("");
-      setModalVisible(true);
-    } catch (error: any) {
-      logError(error);
-    } finally {
-      setLoading(false);
-    }
+    sendAuthenticationLink({
+      email,
+      onSuccess: () => {
+        setModalVisible(true);
+        setEmail("");
+      },
+    });
   };
 
   const invalidEmail = useCallback(() => !isValidEmail(email), [email]);
