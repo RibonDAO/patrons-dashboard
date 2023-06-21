@@ -59,5 +59,21 @@
         }
       }
     }
+  },
+  "auth": {
+    "signInPage": {
+      "signInButton": "Send authentication link",
+      "emailSent": "Authentication link sent to your email",
+      "emailSentDescription": "Click on the link sent to your email to access your account.",
+      "welcomeText": "Welcome to Ribon!",
+      "footerStartText": "By clicking Confirm you agree on Ribon’s",
+      "footerEndText": " and",
+      "termsText": "Terms",
+      "termsLink": "https://ribon.io/en/privacy-policy/#terms",
+      "privacyPolicyText": "Privacy Policy",
+      "privacyPolicyLink": "https://ribon.io/en/privacy-policy/#privacy",
+      "accessUserSupport": "Access user support",
+      "userSupportLink": "https://api.whatsapp.com/send/?phone=554896605461&text=Hii+Ribon%2C+let’s+talk%3F+&type=phone_number&app_absent=0"
+    }
   }
 }

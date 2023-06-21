@@ -21,6 +21,10 @@ import {
   renderHook as renderTestingLibraryHook,
   RenderHookResult,
 } from "@testing-library/react-hooks";
+import CurrentPatronProvider, {
+  CurrentPatronContext,
+  ICurrentPatronContext,
+} from "contexts/currentPatronContext";
 
 export interface RenderWithContextResult {
   component: RenderResult;
@@ -55,6 +59,7 @@ function renderProvider(
 export type RenderComponentProps = {
   history?: MemoryHistory;
   authenticationProviderValue?: Partial<IAuthenticationContext>;
+  currentPatronProviderValue?: Partial<ICurrentPatronContext>;
   locationState?: Record<any, any>;
 };
 
@@ -63,6 +68,7 @@ function renderAllProviders(
   {
     history = createMemoryHistory(),
     authenticationProviderValue = {},
+    currentPatronProviderValue = {},
     locationState = {},
   }: RenderComponentProps = {},
 ) {
@@ -80,10 +86,15 @@ function renderAllProviders(
           <I18nextProvider i18n={i18n}>
             <Router location={locationState} navigator={historyObject}>
               {renderProvider(
-                AuthenticationProvider,
-                AuthenticationContext,
-                authenticationProviderValue,
-                children,
+                CurrentPatronProvider,
+                CurrentPatronContext,
+                currentPatronProviderValue,
+                renderProvider(
+                  AuthenticationProvider,
+                  AuthenticationContext,
+                  authenticationProviderValue,
+                  children,
+                ),
               )}
             </Router>
           </I18nextProvider>
