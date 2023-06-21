@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { stylizedDisplayXs } from "styles/typography/stylized";
 
 export const Container = styled.div`
   width: 100vw;
@@ -13,6 +14,10 @@ export const ContentContainer = styled.div`
   width: 100%;
   padding-left: ${({ theme }) => theme.spacing(16)};
   padding-right: ${({ theme }) => theme.spacing(16)};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     max-width: 328px;
@@ -21,6 +26,7 @@ export const ContentContainer = styled.div`
 
 export const FormContainer = styled.div`
   padding: ${({ theme }) => theme.spacing(8, 0)};
+  width: 100%;
 `;
 
 export const Input = styled.input`
@@ -40,4 +46,14 @@ export const FooterText = styled.p`
     text-decoration: none;
     color: ${({ theme }) => theme.colors.brand.primary[300]};
   }
+`;
+
+export const RibonLogo = styled.img`
+  margin-bottom: ${({ theme }) => theme.spacing(40)};
+`;
+
+export const WelcomeText = styled.h1`
+  ${stylizedDisplayXs}
+  color: ${({ theme }) => theme.colors.brand.primary[900]};
+  margin-bottom: ${({ theme }) => theme.spacing(24)};
 `;

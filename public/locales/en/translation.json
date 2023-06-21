@@ -44,6 +44,9 @@
   "auth": {
     "signInPage": {
       "signInButton": "Send authentication link",
+      "emailSent": "Authentication link sent to your email",
+      "emailSentDescription": "Click on the link sent to your email to access your account.",
+      "welcomeText": "Welcome to Ribon!",
       "footerStartText": "By clicking Confirm you agree on Ribon’s",
       "footerEndText": " and",
       "termsText": "Terms",
