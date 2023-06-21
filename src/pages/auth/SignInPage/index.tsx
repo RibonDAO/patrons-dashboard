@@ -2,9 +2,7 @@ import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import extractUrlValue from "lib/extractUrlValue";
 import { useLocation } from "react-router";
 import authApi from "services/api/authApi";
-import { REFRESH_TOKEN_KEY, TOKEN_KEY } from "utils/constants";
 import { useNavigate } from "react-router-dom";
-import { useCurrentPatron } from "contexts/currentPatronContext";
 import Loader from "components/atomics/Loader";
 import { useTranslation } from "react-i18next";
 import Button from "components/atomics/buttons/Button";
@@ -12,42 +10,32 @@ import RibonIcon from "assets/icons/ribon-icon.svg";
 import { isValidEmail } from "lib/validators";
 import ModalDialog from "components/moleculars/modals/ModalDialog";
 import { logError } from "services/crashReport";
+import { useAuthentication } from "contexts/authenticationContext";
 import * as S from "./styles";
 
 function SignInPage(): JSX.Element {
   const { search } = useLocation();
   const navigateTo = useNavigate();
-  const { setCurrentPatron } = useCurrentPatron();
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const { t } = useTranslation("translation", {
     keyPrefix: "auth.signInPage",
   });
   const [email, setEmail] = useState("");
+  const { signInByAuthToken } = useAuthentication();
 
   useEffect(() => {
     async function authenticate() {
       const authToken = extractUrlValue("authToken", search);
       const id = extractUrlValue("id", search);
       if (id && authToken) {
-        setLoading(true);
-        try {
-          const response = await authApi.postAuthorizeFromAuthToken(
-            authToken,
-            id,
-          );
-          const token = response.headers["access-token"];
-          const refreshToken = response.headers["refresh-token"];
-          setCurrentPatron(response.data);
-          localStorage.setItem(TOKEN_KEY, token);
-          localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
-
-          navigateTo("/contributions");
-        } catch (error: any) {
-          logError(error);
-        } finally {
-          setLoading(false);
-        }
+        signInByAuthToken({
+          authToken,
+          id,
+          onSuccess: () => {
+            navigateTo("/contributions");
+          },
+        });
       }
     }
 

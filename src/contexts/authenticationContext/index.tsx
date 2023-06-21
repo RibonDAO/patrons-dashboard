@@ -1,19 +1,21 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
+import { REFRESH_TOKEN_KEY, TOKEN_KEY } from "utils/constants";
+import authApi from "services/api/authApi";
+import { getCookiesItem, removeCookiesItem, setCookiesItem } from "lib/cookies";
+import { logError } from "services/crashReport";
+import { useCurrentPatron } from "contexts/currentPatronContext";
 
-import { getAuth, signOut, User } from "firebase/auth";
-import userApi from "services/api/userApi";
-import firebaseApp from "services/firebase";
-import { useNavigate } from "react-router-dom";
-import { TOKEN_KEY } from "utils/constants";
-
+type authTokenProps = {
+  authToken: string;
+  id: string;
+  onSuccess?: () => void;
+  onError?: () => void;
+};
 export interface IAuthenticationContext {
-  signInWithGoogle: (response: any) => void;
+  signInByAuthToken: (signInByAuthTokenProps: authTokenProps) => void;
   accessToken: string | null;
-  isAuthorized: (email: string) => boolean;
-  user: User | undefined;
-  setUser: (user: User) => void;
-  allowed: boolean;
   logout: () => void;
+  loading: boolean;
 }
 
 export type Props = {
@@ -25,77 +27,48 @@ export const AuthenticationContext = createContext<IAuthenticationContext>(
 );
 
 function AuthenticationProvider({ children }: Props) {
-  const firebaseAuth = getAuth(firebaseApp);
-  const navigate = useNavigate();
-  const [user, setUser] = useState<User>();
-  const [accessToken, setAccessToken] = useState(
-    localStorage.getItem(TOKEN_KEY),
-  );
-
-  function isAuthorized(email: string) {
-    if (!email) return false;
-    return email.includes("@ribon.io");
-  }
-
-  const allowed = useMemo(() => isAuthorized(user?.email ?? ""), [user]);
-
-  async function signInWithGoogle(response: any) {
+  const [loading, setLoading] = useState(false);
+  const [accessToken, setAccessToken] = useState(getCookiesItem(TOKEN_KEY));
+  const { setCurrentPatron } = useCurrentPatron();
+  async function signInByAuthToken({
+    authToken,
+    id,
+    onSuccess,
+    onError,
+  }: authTokenProps) {
+    setLoading(true);
     try {
-      if (isAuthorized(response.profileObj.email ?? "")) {
-        const userResponse = await userApi.postUser(
-          { idToken: response.tokenId },
-          {
-            headers: {
-              Authorization: `Bearer ${response.accessToken}`,
-              "Content-Type": "application/json",
-              access_token: `${response.accessToken}`,
-            },
-          },
-        );
+      const response = await authApi.postAuthorizeFromAuthToken(authToken, id);
+      const token = response.headers["access-token"];
+      const refreshToken = response.headers["refresh-token"];
 
-        const token = await userResponse.headers["access-token"];
+      setCurrentPatron(response.data);
+      setCookiesItem(TOKEN_KEY, token);
+      setCookiesItem(REFRESH_TOKEN_KEY, refreshToken);
+      setAccessToken(token);
 
-        localStorage.setItem(TOKEN_KEY, token);
-        setAccessToken(token);
-
-        navigate("dashboard");
-      } else {
-        navigate("/", { state: { incorrectDomain: true } });
-      }
-    } catch (error) {
-      navigate("/", { state: { error } });
+      if (onSuccess) onSuccess();
+    } catch (error: any) {
+      logError(error);
+      if (onError) onError();
+    } finally {
+      setLoading(false);
     }
   }
 
   function logout() {
-    signOut(firebaseAuth)
-      .then(() => {
-        localStorage.removeItem(TOKEN_KEY);
-        setUser(undefined);
-      })
-      .catch(() => {})
-      .finally(() => {
-        navigate("/");
-      });
+    removeCookiesItem(TOKEN_KEY);
+    removeCookiesItem(REFRESH_TOKEN_KEY);
   }
-
-  useEffect(() => {
-    if (!accessToken) {
-      logout();
-    }
-  }, [accessToken]);
 
   const authenticationObject: IAuthenticationContext = useMemo(
     () => ({
-      user,
-      setUser,
-      allowed,
-      isAuthorized,
       logout,
       accessToken,
-      signInWithGoogle,
+      loading,
+      signInByAuthToken,
     }),
-    [user, allowed, accessToken],
+    [accessToken],
   );
 
   return (

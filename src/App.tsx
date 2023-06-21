@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import RoutesComponent from "config/routes";
 import CurrentPatronProvider from "contexts/currentPatronContext";
 import { theme } from "@ribon.io/shared/styles";
+import AuthenticationProvider from "contexts/authenticationContext";
 import GlobalStyle from "./styles/globalStyle";
 
 function App() {
@@ -15,7 +16,9 @@ function App() {
         <GlobalStyle />
         <BrowserRouter>
           <CurrentPatronProvider>
-            <RoutesComponent />
+            <AuthenticationProvider>
+              <RoutesComponent />
+            </AuthenticationProvider>
           </CurrentPatronProvider>
         </BrowserRouter>
       </ThemeProvider>
