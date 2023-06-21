@@ -40,28 +40,31 @@ export const Image = styled.img`
   object-fit: cover;
 `;
 
-export const Text = styled.p`
-  ${defaultBodyXsRegular};
+export const Text = styled.div`
+  ${defaultBodyXsRegular}
 
   margin-top: ${({ theme }) => theme.spacing(8)};
   color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const Title = styled.h1`
-  ${defaultBodySmSemibold};
+  ${defaultBodySmSemibold}
+
   margin-top: ${({ theme }) => theme.spacing(8)};
   color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const Label = styled.span`
-  ${defaultBodySmSemibold};
+  ${defaultBodySmSemibold}
+
   color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
-export const Description = styled.p`
-  ${defaultBodySmRegular};
-  color: ${({ theme }) => theme.colors.neutral[600]};
+export const Description = styled.div`
+  ${defaultBodySmRegular}
+
   margin-top: ${({ theme }) => theme.spacing(4)};
+  color: ${({ theme }) => theme.colors.neutral[600]};
 `;
 
 export const DataContainer = styled.div`

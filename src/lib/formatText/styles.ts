@@ -4,7 +4,7 @@ import {
   defaultBodySmRegular,
 } from "styles/typography/default";
 
-export const Text = styled.p`
+export const Text = styled.span`
   ${defaultBodySmRegular}
   color: ${({ theme }) => theme.colors.neutral[600]};
 `;
