@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { mockCookieSet } from "setupTests";
+import { mockCookieRemove, mockCookieSet } from "setupTests";
 
 export function expectTextToBeInTheDocument(text: string) {
   return expect(screen.getByText(text)).toBeInTheDocument();
@@ -23,6 +23,13 @@ export function expectFunctionNotToHaveBeenCalledWith(fn: any, value: any) {
 
 export function expectCookieToHaveBeenSet(key: string, value: string) {
   return expect(mockCookieSet).toHaveBeenCalledWith(key, value, {
+    sameSite: "strict",
+    secure: true,
+  });
+}
+
+export function expectCookieToHaveBeenRemoved(key: string) {
+  return expect(mockCookieRemove).toHaveBeenCalledWith(key, {
     sameSite: "strict",
     secure: true,
   });

@@ -3,12 +3,16 @@ import * as S from "./styles";
 
 type Props = {
   title: string;
+  rightComponent?: JSX.Element;
 };
 
-function Header({ title }: Props) {
+function Header({ title, rightComponent }: Props) {
   return (
     <S.Container>
-      <S.Icon src={RibonIcon} alt="ribon-logo" />
+      <S.TopContainer>
+        <S.Icon src={RibonIcon} alt="ribon-logo" />
+        <S.RightContainer>{rightComponent}</S.RightContainer>
+      </S.TopContainer>
       <S.Title>{title}</S.Title>
     </S.Container>
   );

@@ -48,3 +48,7 @@ export const Divider = styled.div`
     display: none;
   }
 `;
+
+export const BannerContainer = styled.div`
+  max-width: 328px;
+`;

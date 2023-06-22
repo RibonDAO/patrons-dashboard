@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import Header from "components/moleculars/Header";
 import { useCurrentPatron } from "contexts/currentPatronContext";
 import Select from "components/moleculars/Select";
 import { useContributions } from "hooks/apiHooks/useContributions";
@@ -7,6 +6,10 @@ import { useEffect, useState } from "react";
 import { Contribution } from "@ribon.io/shared/types";
 import { AVG_FIRST_TIME_DONORS_PERCENTAGE } from "utils/constants";
 import ImpactSection from "pages/contributions/ContributionPage/ImpactSection";
+import LayoutHeader from "layouts/LayoutHeader";
+import Banner from "components/moleculars/cards/Banner";
+import supportBackground from "assets/images/support-background-green.svg";
+import { theme } from "@ribon.io/shared/styles";
 import EngagementSection from "./EngagementSection";
 import * as S from "./styles";
 import GiftStatusSection from "./GiftStatusSection";
@@ -29,7 +32,7 @@ function ContributionPage(): JSX.Element {
 
   return (
     <S.Container>
-      <Header title={`${t("title")}, ${currentPatron?.name}!`} />
+      <LayoutHeader title={`${t("title")}, ${currentPatron?.name}!`} />
       <S.GiftText>{t("giftText")}</S.GiftText>
       {contributions && (
         <S.SelectContributionContainer>
@@ -78,6 +81,23 @@ function ContributionPage(): JSX.Element {
       </S.Section>
       {currentContribution && (
         <ImpactSection contribution={currentContribution} />
+      )}
+
+      {Number(currentContribution?.stats.usagePercentage) > 75 && (
+        <S.BannerContainer>
+          <Banner
+            title={{
+              text: t("banner.title"),
+              color: theme.colors.neutral[900],
+              size: "medium",
+            }}
+            cardBackground={supportBackground}
+            text={t("banner.description")}
+            onArrowClick={() => {
+              window.open(t("banner.patronDonationLink"), "_blank");
+            }}
+          />
+        </S.BannerContainer>
       )}
     </S.Container>
   );

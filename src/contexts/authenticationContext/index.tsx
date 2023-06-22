@@ -23,7 +23,7 @@ export interface IAuthenticationContext {
     sendAuthenticationLinkProps: authenticationLinkProps,
   ) => void;
   accessToken: string | null;
-  logout: () => void;
+  signOut: () => void;
   loading: boolean;
 }
 
@@ -82,14 +82,14 @@ function AuthenticationProvider({ children }: Props) {
     }
   }
 
-  function logout() {
+  function signOut() {
     removeCookiesItem(TOKEN_KEY);
     removeCookiesItem(REFRESH_TOKEN_KEY);
   }
 
   const authenticationObject: IAuthenticationContext = useMemo(
     () => ({
-      logout,
+      signOut,
       accessToken,
       loading,
       sendAuthenticationLink,
