@@ -16,8 +16,6 @@ export type ButtonProps = {
   ribonsColor?: string;
   leftIcon?: IconProps;
   rightIcon?: IconProps;
-  altLeftIconText?: string;
-  altRightIconText?: string;
   onClick?: onClickType;
   outline?: boolean;
   disabled?: boolean;
@@ -38,8 +36,6 @@ export default function Button({
   leftIcon,
   rightIcon,
   onClick,
-  altLeftIconText = "left icon",
-  altRightIconText = "right icon",
   outline = false,
   disabled = false,
   round = false,

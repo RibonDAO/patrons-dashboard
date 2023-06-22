@@ -81,6 +81,8 @@ function ModalDialog({
   };
 
   const primaryButtonTextColor = () => {
+    if (primaryButton?.textColor) return primaryButton.textColor;
+
     switch (type) {
       case "warning":
         return theme.colors.neutral[900];
@@ -91,6 +93,8 @@ function ModalDialog({
   };
 
   const primaryButtonBackgroundColor = () => {
+    if (primaryButton?.backgroundColor) return primaryButton.backgroundColor;
+
     switch (type) {
       case "error":
         return theme.colors.feedback.error[600];

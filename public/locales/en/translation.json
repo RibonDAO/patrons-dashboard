@@ -79,6 +79,9 @@
     }
   },
   "layoutHeader": {
-    "signOut": "Sign out"
+    "signOutButtonText": "Sign out",
+    "signOutTitle": "You're signing out",
+    "signOutDescription": "If you want to access this page again, you’ll need to sign back in.",
+    "stayButtonText": "Stay in Ribon"
   }
 }
