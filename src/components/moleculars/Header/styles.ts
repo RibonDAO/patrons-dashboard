@@ -23,3 +23,11 @@ export const Title = styled.h6`
     ${stylizedDisplaySm}
   }
 `;
+
+export const RightContainer = styled.div``;
+
+export const TopContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;

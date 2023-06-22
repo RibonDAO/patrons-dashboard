@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import Header from "components/moleculars/Header";
 import { useCurrentPatron } from "contexts/currentPatronContext";
 import Select from "components/moleculars/Select";
 import { useContributions } from "hooks/apiHooks/useContributions";
@@ -7,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Contribution } from "@ribon.io/shared/types";
 import { AVG_FIRST_TIME_DONORS_PERCENTAGE } from "utils/constants";
 import ImpactSection from "pages/contributions/ContributionPage/ImpactSection";
+import LayoutHeader from "layouts/LayoutHeader";
 import Banner from "components/moleculars/cards/Banner";
 import supportBackground from "assets/images/support-background-green.svg";
 import { theme } from "@ribon.io/shared/styles";
@@ -32,7 +32,7 @@ function ContributionPage(): JSX.Element {
 
   return (
     <S.Container>
-      <Header title={`${t("title")}, ${currentPatron?.name}!`} />
+      <LayoutHeader title={`${t("title")}, ${currentPatron?.name}!`} />
       <S.GiftText>{t("giftText")}</S.GiftText>
       {contributions && (
         <S.SelectContributionContainer>
