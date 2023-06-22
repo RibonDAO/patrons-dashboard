@@ -9,12 +9,15 @@ import RibonIcon from "assets/icons/ribon-icon.svg";
 import { isValidEmail } from "lib/validators";
 import ModalDialog from "components/moleculars/modals/ModalDialog";
 import { useAuthentication } from "contexts/authenticationContext";
+import rightTopShape from "assets/images/shape-top-right.svg";
+import leftBottomShape from "assets/images/shape-bottom-left.svg";
 import * as S from "./styles";
 
 function SignInPage(): JSX.Element {
   const { search } = useLocation();
   const navigateTo = useNavigate();
   const [modalVisible, setModalVisible] = useState(false);
+  const [errorModalVisible, setErrorModalVisible] = useState(false);
   const { t } = useTranslation("translation", {
     keyPrefix: "auth.signInPage",
   });
@@ -52,6 +55,9 @@ function SignInPage(): JSX.Element {
         setModalVisible(true);
         setEmail("");
       },
+      onError: () => {
+        setErrorModalVisible(true);
+      },
     });
   };
 
@@ -63,12 +69,21 @@ function SignInPage(): JSX.Element {
         <Loader />
       ) : (
         <S.ContentContainer>
+          <S.RightTopShape src={rightTopShape} />
+          <S.LeftBottomShape src={leftBottomShape} />
           <ModalDialog
             visible={modalVisible}
             setVisible={setModalVisible}
             title={t("emailSent")}
             type="success"
             description={t("emailSentDescription")}
+          />
+          <ModalDialog
+            visible={errorModalVisible}
+            setVisible={setErrorModalVisible}
+            title={t("emailSentError")}
+            type="error"
+            description={t("emailSentErrorDescription")}
           />
           <S.RibonLogo src={RibonIcon} alt="Ribon" />
           <S.WelcomeText>{t("welcomeText")}</S.WelcomeText>
@@ -78,7 +93,7 @@ function SignInPage(): JSX.Element {
               name="email"
               id="email"
               type="email"
-              placeholder="email"
+              placeholder="E-mail"
               value={email}
               onChange={onEmailInputChange}
               required
@@ -93,13 +108,17 @@ function SignInPage(): JSX.Element {
 
           <S.FooterText>
             {t("footerStartText")}{" "}
-            <a href={t("termsLink")} target="_blank" rel="noreferrer">
+            <S.Link href={t("termsLink")} target="_blank" rel="noreferrer">
               {t("termsText")}
-            </a>
+            </S.Link>
             {t("footerEndText")}{" "}
-            <a href={t("privacyPolicyLink")} target="_blank" rel="noreferrer">
+            <S.Link
+              href={t("privacyPolicyLink")}
+              target="_blank"
+              rel="noreferrer"
+            >
               {t("privacyPolicyText")}
-            </a>
+            </S.Link>
           </S.FooterText>
         </S.ContentContainer>
       )}
