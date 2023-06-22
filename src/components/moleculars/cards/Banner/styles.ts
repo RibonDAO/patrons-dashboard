@@ -5,7 +5,7 @@ import {
   defaultBodySmSemibold,
   defaultHeadingXxs,
 } from "styles/typography/default";
-import Button from "../../atomics/buttons/Button";
+import Button from "../../../atomics/buttons/Button";
 
 export const Container = styled.div<{
   backgroundImage?: string;
@@ -15,14 +15,19 @@ export const Container = styled.div<{
   width: 100%;
   width: auto;
   padding: ${({ theme }) => theme.spacing(16, 16, 16)};
-  border-radius: 16px;
+  border-radius: 8px;
   display: flex;
   flex-direction: ${({ flexDirection }) => flexDirection};
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.colors.brand.secondary[300]};
   background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
   background-size: cover;
-  box-shadow: 0 4px 12px 0 ${({ theme }) => theme.colors.defaultShadow};
+
+  ${(props) =>
+    props.flexDirection === "row" &&
+    css`
+      justify-content: space-between;
+    `}
 `;
 
 export const Content = styled.div`
@@ -100,8 +105,6 @@ export const CardButton = styled(Button)`
 
 export const ArrowContainer = styled.div`
   display: flex;
-  width: 10%;
-  margin-left: ${({ theme }) => theme.spacing(4)};
   flex-direction: row;
   justify-self: center;
   position: relative;
