@@ -63,10 +63,10 @@
   "auth": {
     "signInPage": {
       "signInButton": "Send authentication link",
-      "emailSent": "Authentication link sent to your email",
-      "emailSentDescription": "Click on the link sent to your email to access your account.",
-      "emailSentError": "Email not sent",
-      "emailSentErrorDescription": "Please, check the email you entered or try again later.",
+      "emailSent": "We sent you an account confirmation e-mail",
+      "emailSentDescription": "Please, click the safety link we sent you to confirm your account and enable your access.",
+      "emailSentError": "Your e-mail is not registered",
+      "emailSentErrorDescription": "Please, check if the e-mail provided is correct or contact our support team.",
       "welcomeText": "Welcome to Ribon!",
       "footerStartText": "By clicking Confirm you agree on Ribon’s",
       "footerEndText": " and",
