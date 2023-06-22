@@ -5,7 +5,7 @@ import { TOKEN_KEY } from "utils/constants";
 function PrivateRoute({ children }: any) {
   const accessToken = getCookiesItem(TOKEN_KEY);
 
-  return accessToken ? children : <Navigate to="/" />;
+  return accessToken ? children : <Navigate to="/auth" />;
 }
 
 export default PrivateRoute;
