@@ -17,6 +17,7 @@ function SignInPage(): JSX.Element {
   const { search } = useLocation();
   const navigateTo = useNavigate();
   const [modalVisible, setModalVisible] = useState(false);
+  const [errorModalVisible, setErrorModalVisible] = useState(false);
   const { t } = useTranslation("translation", {
     keyPrefix: "auth.signInPage",
   });
@@ -54,6 +55,9 @@ function SignInPage(): JSX.Element {
         setModalVisible(true);
         setEmail("");
       },
+      onError: () => {
+        setErrorModalVisible(true);
+      },
     });
   };
 
@@ -73,6 +77,13 @@ function SignInPage(): JSX.Element {
             title={t("emailSent")}
             type="success"
             description={t("emailSentDescription")}
+          />
+          <ModalDialog
+            visible={errorModalVisible}
+            setVisible={setErrorModalVisible}
+            title={t("emailSentError")}
+            type="error"
+            description={t("emailSentErrorDescription")}
           />
           <S.RibonLogo src={RibonIcon} alt="Ribon" />
           <S.WelcomeText>{t("welcomeText")}</S.WelcomeText>
