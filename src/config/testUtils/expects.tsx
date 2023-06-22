@@ -1,4 +1,5 @@
 import { screen } from "@testing-library/react";
+import { mockCookieSet } from "setupTests";
 
 export function expectTextToBeInTheDocument(text: string) {
   return expect(screen.getByText(text)).toBeInTheDocument();
@@ -18,4 +19,11 @@ export function expectDisplayValueToBeInTheDocument(value: string) {
 
 export function expectFunctionNotToHaveBeenCalledWith(fn: any, value: any) {
   return expect(fn).not.toHaveBeenCalledWith(value);
+}
+
+export function expectCookieToHaveBeenSet(key: string, value: string) {
+  return expect(mockCookieSet).toHaveBeenCalledWith(key, value, {
+    sameSite: "strict",
+    secure: true,
+  });
 }
