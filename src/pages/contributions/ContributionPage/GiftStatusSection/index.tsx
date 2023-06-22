@@ -4,7 +4,7 @@ import Data from "components/moleculars/Data";
 import { theme } from "@ribon.io/shared/styles";
 import Title from "components/moleculars/Title";
 import ProgressBar from "components/atomics/ProgressBar";
-import { ContributionStats } from "@ribon.io/shared";
+import { ContributionStats } from "@ribon.io/shared/types";
 import * as S from "./styles";
 
 function GiftStatusSection({ ...stats }: ContributionStats): JSX.Element {

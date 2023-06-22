@@ -1,6 +1,6 @@
 import { theme } from "@ribon.io/shared/styles";
-import Arrow from "../../atomics/arrows/Arrow";
-import Icon, { IconProps } from "../../atomics/Icon";
+import Arrow from "../../../atomics/arrows/Arrow";
+import Icon, { IconProps } from "../../../atomics/Icon";
 import * as S from "./styles";
 
 const { primary } = theme.colors.brand;
