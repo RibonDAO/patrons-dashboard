@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { stylizedDisplayXs } from "styles/typography/stylized";
+import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const Container = styled.div`
   width: 100vw;
@@ -25,7 +26,7 @@ export const ContentContainer = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  padding: ${({ theme }) => theme.spacing(8, 0)};
+  padding: ${({ theme }) => theme.spacing(8, 0, 16, 0)};
   width: 100%;
 `;
 
@@ -39,13 +40,9 @@ export const Input = styled.input`
 `;
 
 export const FooterText = styled.p`
+  ${defaultBodyXsRegular};
   text-align: center;
   color: ${({ theme }) => theme.colors.neutral[500]};
-
-  a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.brand.primary[300]};
-  }
 `;
 
 export const RibonLogo = styled.img`
@@ -56,4 +53,31 @@ export const WelcomeText = styled.h1`
   ${stylizedDisplayXs}
   color: ${({ theme }) => theme.colors.brand.primary[900]};
   margin-bottom: ${({ theme }) => theme.spacing(24)};
+`;
+
+export const Link = styled.a`
+  text-decoration: underline;
+  color: ${({ theme }) => theme.colors.brand.primary[600]};
+`;
+
+export const RightTopShape = styled.img`
+  display: none;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+`;
+
+export const LeftBottomShape = styled.img`
+  display: none;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
 `;
