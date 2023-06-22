@@ -7,10 +7,9 @@ jest.mock("react-chartjs-2", () => ({
   Pie: () => null,
 }));
 
-jest.mock("js-cookie", () => ({
-  __esModule: true,
-  default: {
+jest.mock("universal-cookie", () =>
+  jest.fn().mockImplementation(() => ({
     set: mockCookieSet,
     get: mockCookieGet,
-  },
-}));
+  })),
+);
