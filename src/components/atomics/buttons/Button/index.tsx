@@ -1,6 +1,7 @@
 import React, { ButtonHTMLAttributes } from "react";
 import { ReactComponent as RibonIcon } from "assets/icons/ribon.svg";
 import { theme } from "@ribon.io/shared/styles";
+import Icon, { IconProps } from "components/atomics/Icon";
 import * as S from "./styles";
 
 export type onClickType = () => void;
@@ -13,8 +14,8 @@ export type ButtonProps = {
   borderColor?: string;
   ribons?: boolean;
   ribonsColor?: string;
-  leftIcon?: string;
-  rightIcon?: string;
+  leftIcon?: IconProps;
+  rightIcon?: IconProps;
   altLeftIconText?: string;
   altRightIconText?: string;
   onClick?: onClickType;
@@ -85,17 +86,14 @@ export default function Button({
       borderColor={activeBorderColor()}
       ribonsColor={ribonsColor}
       onClick={handleClick}
-      leftIcon={leftIcon}
       disabled={disabled}
       borderRadius={borderRadius()}
       size={size}
       {...props}
     >
-      {leftIcon && <img id="left-icon" src={leftIcon} alt={altLeftIconText} />}
+      {leftIcon && <Icon {...leftIcon} id="left-icon" />}
       {text}
-      {rightIcon && (
-        <img id="right-icon" src={rightIcon} alt={altRightIconText} />
-      )}
+      {rightIcon && <Icon {...rightIcon} id="right-icon" />}
       {ribons && <RibonIcon />}
     </S.Container>
   );

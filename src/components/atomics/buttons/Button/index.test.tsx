@@ -1,11 +1,7 @@
 import React from "react";
 import { clickOn, renderComponent } from "config/testUtils";
-import {
-  expectImageToBeInTheDocument,
-  expectTextToBeInTheDocument,
-} from "config/testUtils/expects";
+import { expectTextToBeInTheDocument } from "config/testUtils/expects";
 import { screen } from "@testing-library/react";
-import ribon from "assets/icons/ribon.svg";
 import { theme } from "@ribon.io/shared/styles";
 import Button from ".";
 
@@ -34,16 +30,20 @@ describe("<Button />", () => {
   describe("when has a icon", () => {
     it("renders left Icon when leftIcon is passed", () => {
       renderComponent(
-        <Button text="button" onClick={() => {}} leftIcon={ribon} />,
+        <Button text="button" onClick={() => {}} leftIcon={{ name: "user" }} />,
       );
-      expectImageToBeInTheDocument("left icon");
+      expectTextToBeInTheDocument("user");
     });
 
     it("renders right Icon when rightIcon is passed", () => {
       renderComponent(
-        <Button text="button" onClick={() => {}} rightIcon={ribon} />,
+        <Button
+          text="button"
+          onClick={() => {}}
+          rightIcon={{ name: "logout" }}
+        />,
       );
-      expectImageToBeInTheDocument("right icon");
+      expectTextToBeInTheDocument("logout");
     });
   });
 

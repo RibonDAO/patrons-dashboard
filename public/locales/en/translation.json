@@ -77,5 +77,8 @@
       "accessUserSupport": "Access user support",
       "userSupportLink": "https://api.whatsapp.com/send/?phone=554896605461&text=Hii+Ribon%2C+let’s+talk%3F+&type=phone_number&app_absent=0"
     }
+  },
+  "layoutHeader": {
+    "signOut": "Sign out"
   }
 }
