@@ -9,6 +9,8 @@ import RibonIcon from "assets/icons/ribon-icon.svg";
 import { isValidEmail } from "lib/validators";
 import ModalDialog from "components/moleculars/modals/ModalDialog";
 import { useAuthentication } from "contexts/authenticationContext";
+import rightTopShape from "assets/images/shape-top-right.svg";
+import leftBottomShape from "assets/images/shape-bottom-left.svg";
 import * as S from "./styles";
 
 function SignInPage(): JSX.Element {
@@ -63,6 +65,8 @@ function SignInPage(): JSX.Element {
         <Loader />
       ) : (
         <S.ContentContainer>
+          <S.RightTopShape src={rightTopShape} />
+          <S.LeftBottomShape src={leftBottomShape} />
           <ModalDialog
             visible={modalVisible}
             setVisible={setModalVisible}
@@ -93,13 +97,17 @@ function SignInPage(): JSX.Element {
 
           <S.FooterText>
             {t("footerStartText")}{" "}
-            <a href={t("termsLink")} target="_blank" rel="noreferrer">
+            <S.Link href={t("termsLink")} target="_blank" rel="noreferrer">
               {t("termsText")}
-            </a>
+            </S.Link>
             {t("footerEndText")}{" "}
-            <a href={t("privacyPolicyLink")} target="_blank" rel="noreferrer">
+            <S.Link
+              href={t("privacyPolicyLink")}
+              target="_blank"
+              rel="noreferrer"
+            >
               {t("privacyPolicyText")}
-            </a>
+            </S.Link>
           </S.FooterText>
         </S.ContentContainer>
       )}
