@@ -1,0 +1,19 @@
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import Select, { Props } from ".";
+
+export default {
+  text: "Select",
+  component: Select,
+} as ComponentMeta<typeof Select>;
+
+const Template: ComponentStory<typeof Select> = function (args: Props) {
+  return <Select {...args} />;
+};
+
+export const Default = Template.bind({});
+
+Default.args = {
+  name: "select",
+  values: ["value1", "value2", "value3"],
+  valueText: (value) => value,
+};
