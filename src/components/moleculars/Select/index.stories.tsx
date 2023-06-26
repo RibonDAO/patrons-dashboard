@@ -20,4 +20,5 @@ Default.args = {
   name: "select",
   values: ["first", "second", "third"],
   valueText: (value) => value,
+  placeholder: "placeholder",
 };

@@ -1,11 +1,4 @@
-import React, {
-  CSSProperties,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { CSSProperties, useMemo, useRef, useState } from "react";
 import ArrowDownIcon from "assets/icons/arrow-down-icon.svg";
 import ModalBlank from "components/moleculars/modals/ModalBlank";
 import { theme } from "@ribon.io/shared/styles";
@@ -21,6 +14,7 @@ export type Props = {
   customInputStyles?: CSSProperties;
   containerId?: string;
   disabled?: boolean;
+  placeholder?: string;
 };
 
 function Dropdown({
@@ -33,6 +27,7 @@ function Dropdown({
   containerId = "dropdown-container",
   customInputStyles = {},
   disabled = false,
+  placeholder,
 }: Props): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const valueToText = (value: any) => {
@@ -41,7 +36,7 @@ function Dropdown({
     return value;
   };
 
-  const [dropdownValue, setDropdownValue] = useState(values[0]);
+  const [dropdownValue, setDropdownValue] = useState<string>(defaultValue);
   const [optionsVisible, setOptionsVisible] = useState(false);
 
   const handleInputClick = () => {
@@ -55,14 +50,6 @@ function Dropdown({
     setOptionsVisible(false);
     if (onOptionChanged) onOptionChanged(value);
   };
-
-  const updateDropdownValue = useCallback(() => {
-    if (defaultValue) setDropdownValue(defaultValue);
-  }, [defaultValue]);
-
-  useEffect(() => {
-    updateDropdownValue();
-  }, [updateDropdownValue]);
 
   const parentElement = useMemo(() => {
     if (containerRef?.current != null)
@@ -127,6 +114,7 @@ function Dropdown({
           readOnly
           style={inputStyles()}
           disabled={disabled}
+          placeholder={placeholder}
         />
         <S.ArrowIcon src={ArrowDownIcon} alt="arrow-down" />
       </S.Input>
