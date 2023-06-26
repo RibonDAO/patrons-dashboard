@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import ArrowDownIcon from "assets/icons/arrow-down-icon.svg";
 import ModalBlank from "components/moleculars/modals/ModalBlank";
+import { theme } from "@ribon.io/shared/styles";
 import * as S from "./styles";
 
 export type Props = {
@@ -19,6 +20,7 @@ export type Props = {
   valueText?: (value: any) => string;
   customInputStyles?: CSSProperties;
   containerId?: string;
+  disabled?: boolean;
 };
 
 function Dropdown({
@@ -30,6 +32,7 @@ function Dropdown({
   valueText,
   containerId = "dropdown-container",
   customInputStyles = {},
+  disabled = false,
 }: Props): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const valueToText = (value: any) => {
@@ -42,6 +45,8 @@ function Dropdown({
   const [optionsVisible, setOptionsVisible] = useState(false);
 
   const handleInputClick = () => {
+    if (disabled) return;
+
     setOptionsVisible(!optionsVisible);
   };
 
@@ -65,6 +70,17 @@ function Dropdown({
     return document.body;
   }, [containerRef.current]);
 
+  const inputStyles = () => {
+    if (disabled)
+      return {
+        color: theme.colors.neutral[400],
+        borderColor: theme.colors.neutral[300],
+        backgroundColor: theme.colors.neutral[50],
+      };
+
+    return customInputStyles;
+  };
+
   return (
     <S.Container id={containerId} ref={containerRef}>
       <ModalBlank
@@ -78,13 +94,16 @@ function Dropdown({
             position: "relative",
           },
           content: {
-            paddingTop: 8,
-            paddingBottom: 8,
+            paddingTop: 4,
+            paddingBottom: 4,
+            paddingRight: 0,
+            paddingLeft: 0,
             position: "absolute",
             boxShadow: "0px 4px 12px 0px rgba(24, 86, 105, 0.15)",
             zIndex: 1,
             margin: 0,
             width: "100%",
+            borderRadius: 4,
           },
         }}
         parentSelector={() => parentElement}
@@ -98,7 +117,7 @@ function Dropdown({
           </S.OptionContainer>
         ))}
       </ModalBlank>
-      <S.Input onClick={handleInputClick} style={customInputStyles}>
+      <S.Input onClick={handleInputClick} style={inputStyles()}>
         {label && <label htmlFor={name}>{label}</label>}
         <input
           type="text"
@@ -106,7 +125,8 @@ function Dropdown({
           aria-label={name}
           value={valueToText(dropdownValue)}
           readOnly
-          style={{ color: customInputStyles.color }}
+          style={inputStyles()}
+          disabled={disabled}
         />
         <S.ArrowIcon src={ArrowDownIcon} alt="arrow-down" />
       </S.Input>

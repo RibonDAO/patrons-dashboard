@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { defaultBodySmSemibold } from "styles/typography/default";
+import { defaultBodyMdRegular } from "styles/typography/default";
 
 export const Input = styled.div`
   width: 100%;
@@ -26,7 +26,7 @@ export const Input = styled.div`
   }
 
   input {
-    ${defaultBodySmSemibold}
+    ${defaultBodyMdRegular};
 
     width: 100%;
     border: none;
@@ -64,6 +64,7 @@ export const Container = styled.div`
 
 export const OptionContainer = styled.div`
   padding: ${({ theme }) => theme.spacing(8, 16)};
+  width: 100%;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.neutral[50]};
@@ -71,7 +72,9 @@ export const OptionContainer = styled.div`
   }
 `;
 
-export const OptionText = styled.p``;
+export const OptionText = styled.p`
+  ${defaultBodyMdRegular}
+`;
 
 export const ArrowIcon = styled.img`
   height: 18px;

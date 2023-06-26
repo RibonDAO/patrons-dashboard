@@ -7,13 +7,17 @@ export default {
 } as ComponentMeta<typeof Select>;
 
 const Template: ComponentStory<typeof Select> = function (args: Props) {
-  return <Select {...args} />;
+  return (
+    <div style={{ maxWidth: 360 }}>
+      <Select {...args} />
+    </div>
+  );
 };
 
 export const Default = Template.bind({});
 
 Default.args = {
   name: "select",
-  values: ["value1", "value2", "value3"],
+  values: ["first", "second", "third"],
   valueText: (value) => value,
 };
