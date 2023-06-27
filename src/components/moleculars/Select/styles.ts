@@ -1,58 +1,13 @@
 import styled from "styled-components";
 import { defaultBodyMdRegular } from "styles/typography/default";
+import Select from "react-select";
 
-export const Input = styled.div`
+export const SelectInput = styled(Select)`
   width: 100%;
-  height: 50px;
-  margin-bottom: ${({ theme }) => theme.spacing(12)};
-  padding: ${({ theme }) => theme.spacing(0, 12)};
-  border: 1px solid ${({ theme }) => theme.colors.neutral[300]};
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  color: ${({ theme }) => theme.colors.neutral[800]};
-
-  label {
-    padding: ${({ theme }) => theme.spacing(0, 4)};
-    position: absolute;
-    top: -15px;
-    left: 10px;
-    display: inline;
-    text-align: center;
-    background-color: ${({ theme }) => theme.colors.neutral10};
-    color: ${({ theme }) => theme.colors.brand.primary[300]};
-  }
+  ${defaultBodyMdRegular};
 
   input {
-    ${defaultBodyMdRegular};
-
-    width: 100%;
-    border: none;
-    border-radius: 4px;
-    box-sizing: border-box;
-    line-height: 20px;
-    background: transparent;
-    color: ${({ theme }) => theme.colors.neutral[800]};
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  img {
-    width: 24px;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    label {
-      top: -15px;
-    }
+    height: 48px;
   }
 `;
 
