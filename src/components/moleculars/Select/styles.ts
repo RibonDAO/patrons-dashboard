@@ -7,7 +7,7 @@ export const SelectInput = styled(Select)`
   ${defaultBodyMdRegular};
 
   input {
-    height: 48px;
+    height: 40px;
   }
 `;
 

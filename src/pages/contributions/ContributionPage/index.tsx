@@ -44,6 +44,7 @@ function ContributionPage(): JSX.Element {
               setCurrentContribution(contribution);
             }}
             defaultValue={contributions[0]}
+            isSearchable
           />
         </S.SelectContributionContainer>
       )}

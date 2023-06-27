@@ -78,7 +78,7 @@ function Dropdown({
               borderColor: theme.colors.neutral[600],
               boxShadow: "none",
             },
-            ":focus": {
+            ":focus-within": {
               borderColor: theme.colors.neutral[600],
               boxShadow: "none",
             },
@@ -95,7 +95,6 @@ function Dropdown({
             fontWeight: 400,
             background: isSelected ? theme.colors.neutral[50] : "#FFFFFF",
             margin: 0,
-            padding: 10,
             height: 48,
           }),
         }}
