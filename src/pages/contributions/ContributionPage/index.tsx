@@ -10,6 +10,7 @@ import LayoutHeader from "layouts/LayoutHeader";
 import Banner from "components/moleculars/cards/Banner";
 import supportBackground from "assets/images/support-background-green.svg";
 import { theme } from "@ribon.io/shared/styles";
+import Spinner from "components/atomics/Spinner";
 import EngagementSection from "./EngagementSection";
 import * as S from "./styles";
 import GiftStatusSection from "./GiftStatusSection";
@@ -33,73 +34,79 @@ function ContributionPage(): JSX.Element {
   return (
     <S.Container>
       <LayoutHeader title={`${t("title")}, ${currentPatron?.name}!`} />
-      <S.GiftText>{t("giftText")}</S.GiftText>
-      {contributions && (
-        <S.SelectContributionContainer>
-          <Select
-            name="name"
-            values={contributions}
-            valueText={(value) => value.label}
-            onOptionChanged={(contribution) => {
-              setCurrentContribution(contribution);
-            }}
-            defaultValue={contributions[0]}
-            isSearchable
-          />
-        </S.SelectContributionContainer>
-      )}
-      <S.GiftSection>
-        {currentContribution && (
-          <GiftStatusSection {...currentContribution.stats} />
-        )}
-      </S.GiftSection>
-      <S.Section>
-        <S.Divider />
-        {currentContribution?.stats && (
-          <EngagementSection
-            totalDonors={currentContribution.stats.totalTickets?.toLocaleString()}
-            donationsPerPerson={currentContribution.stats.avgDonationsPerPerson?.toLocaleString()}
-            firstTimeDonors={(
-              currentContribution.stats.totalTickets *
-              AVG_FIRST_TIME_DONORS_PERCENTAGE
-            )
-              .toFixed()
-              .toLocaleString()}
-          />
-        )}
-        <S.Divider />
-        {currentContribution?.stats && (
-          <GiftBoostSection
-            amountToCause={`${currentContribution.stats.totalAmountToCause}`}
-            increaseAmount={`+${currentContribution.stats.totalIncreasePercentage.toFixed(
-              2,
-            )}%`}
-            contributionsInspiredByYou={`+${currentContribution.stats.boostAmount}`}
-            ribonFee={currentContribution.stats.ribonFee.toString()}
-            initialGift={currentContribution.stats.initialAmount.toString()}
-          />
-        )}
-        <S.Divider />
-      </S.Section>
-      {currentContribution && (
-        <ImpactSection contribution={currentContribution} />
-      )}
+      {loadingContributions ? (
+        <Spinner size="40px" />
+      ) : (
+        <>
+          <S.GiftText>{t("giftText")}</S.GiftText>
+          {contributions && (
+            <S.SelectContributionContainer>
+              <Select
+                name="name"
+                values={contributions}
+                valueText={(value) => value.label}
+                onOptionChanged={(contribution) => {
+                  setCurrentContribution(contribution);
+                }}
+                defaultValue={contributions[0]}
+                isSearchable
+              />
+            </S.SelectContributionContainer>
+          )}
+          <S.GiftSection>
+            {currentContribution && (
+              <GiftStatusSection {...currentContribution.stats} />
+            )}
+          </S.GiftSection>
+          <S.Section>
+            <S.Divider />
+            {currentContribution?.stats && (
+              <EngagementSection
+                totalDonors={currentContribution.stats.totalTickets?.toLocaleString()}
+                donationsPerPerson={currentContribution.stats.avgDonationsPerPerson?.toLocaleString()}
+                firstTimeDonors={(
+                  currentContribution.stats.totalTickets *
+                  AVG_FIRST_TIME_DONORS_PERCENTAGE
+                )
+                  .toFixed()
+                  .toLocaleString()}
+              />
+            )}
+            <S.Divider />
+            {currentContribution?.stats && (
+              <GiftBoostSection
+                amountToCause={`${currentContribution.stats.totalAmountToCause}`}
+                increaseAmount={`+${currentContribution.stats.totalIncreasePercentage.toFixed(
+                  2,
+                )}%`}
+                contributionsInspiredByYou={`+${currentContribution.stats.boostAmount}`}
+                ribonFee={currentContribution.stats.ribonFee.toString()}
+                initialGift={currentContribution.stats.initialAmount.toString()}
+              />
+            )}
+            <S.Divider />
+          </S.Section>
+          {currentContribution && (
+            <ImpactSection contribution={currentContribution} />
+          )}
 
-      {Number(currentContribution?.stats.usagePercentage) > 75 && (
-        <S.BannerContainer>
-          <Banner
-            title={{
-              text: t("banner.title"),
-              color: theme.colors.neutral[900],
-              size: "medium",
-            }}
-            cardBackground={supportBackground}
-            text={t("banner.description")}
-            onArrowClick={() => {
-              window.open(t("banner.patronDonationLink"), "_blank");
-            }}
-          />
-        </S.BannerContainer>
+          {Number(currentContribution?.stats.usagePercentage) > 75 && (
+            <S.BannerContainer>
+              <Banner
+                title={{
+                  text: t("banner.title"),
+                  color: theme.colors.neutral[900],
+                  size: "medium",
+                }}
+                cardBackground={supportBackground}
+                text={t("banner.description")}
+                onArrowClick={() => {
+                  window.open(t("banner.patronDonationLink"), "_blank");
+                }}
+              />
+            </S.BannerContainer>
+          )}
+        </>
       )}
     </S.Container>
   );
