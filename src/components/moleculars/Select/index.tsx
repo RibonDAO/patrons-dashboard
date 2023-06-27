@@ -1,5 +1,5 @@
-import React, { CSSProperties, useCallback, useRef } from "react";
-import { theme } from "@ribon.io/shared/styles";
+import React, { useCallback, useRef } from "react";
+import { StylesConfig } from "react-select";
 import * as S from "./styles";
 
 export type Props = {
@@ -9,7 +9,7 @@ export type Props = {
   defaultValue?: any;
   onOptionChanged?: (value: any) => void;
   valueText?: (value: any) => string;
-  customInputStyles?: CSSProperties;
+  customInputStyles?: StylesConfig;
   containerId?: string;
   disabled?: boolean;
   placeholder?: string;
@@ -45,17 +45,6 @@ function Dropdown({
     if (onOptionChanged) onOptionChanged(value);
   };
 
-  const inputStyles = () => {
-    if (disabled)
-      return {
-        color: theme.colors.neutral[400],
-        borderColor: theme.colors.neutral[300],
-        backgroundColor: theme.colors.neutral[50],
-      };
-
-    return customInputStyles;
-  };
-
   return (
     <S.Container id={containerId} ref={containerRef}>
       <S.SelectInput
@@ -67,37 +56,7 @@ function Dropdown({
         options={formattedValues()}
         onChange={(option: any) => handleOptionClick(option.value)}
         isSearchable={isSearchable}
-        styles={{
-          indicatorSeparator: (styles) => ({ ...styles, display: "none" }),
-          control: (styles) => ({
-            ...styles,
-            borderRadius: 4,
-            boxShadow: "none",
-            borderColors: theme.colors.neutral[300],
-            ":hover": {
-              borderColor: theme.colors.neutral[600],
-              boxShadow: "none",
-            },
-            ":focus-within": {
-              borderColor: theme.colors.neutral[600],
-              boxShadow: "none",
-            },
-            ...inputStyles(),
-          }),
-          option: (base, { isSelected }) => ({
-            ...base,
-            "&:hover": {
-              borderColor: "#CCCCCC",
-              background: theme.colors.neutral[50],
-              cursor: "pointer",
-            },
-            color: theme.colors.neutral[900],
-            fontWeight: 400,
-            background: isSelected ? theme.colors.neutral[50] : "#FFFFFF",
-            margin: 0,
-            height: 48,
-          }),
-        }}
+        styles={{ ...S.selectInputStyles, ...customInputStyles }}
       />
     </S.Container>
   );

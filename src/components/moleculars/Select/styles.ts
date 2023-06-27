@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { defaultBodyMdRegular } from "styles/typography/default";
-import Select from "react-select";
+import Select, { StylesConfig } from "react-select";
+import { theme } from "@ribon.io/shared/styles";
 
 export const SelectInput = styled(Select)`
   width: 100%;
@@ -17,20 +18,33 @@ export const Container = styled.div`
   display: inline-block;
 `;
 
-export const OptionContainer = styled.div`
-  padding: ${({ theme }) => theme.spacing(8, 16)};
-  width: 100%;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.neutral[50]};
-    cursor: pointer;
-  }
-`;
-
-export const OptionText = styled.p`
-  ${defaultBodyMdRegular}
-`;
-
-export const ArrowIcon = styled.img`
-  height: 18px;
-`;
+export const selectInputStyles: StylesConfig = {
+  indicatorSeparator: (styles) => ({ ...styles, display: "none" }),
+  control: (styles) => ({
+    ...styles,
+    borderRadius: 4,
+    boxShadow: "none",
+    borderColors: theme.colors.neutral[300],
+    ":hover": {
+      borderColor: theme.colors.neutral[600],
+      boxShadow: "none",
+    },
+    ":focus-within": {
+      borderColor: theme.colors.neutral[600],
+      boxShadow: "none",
+    },
+  }),
+  option: (base, { isSelected }) => ({
+    ...base,
+    "&:hover": {
+      borderColor: "#CCCCCC",
+      background: theme.colors.neutral[50],
+      cursor: "pointer",
+    },
+    color: theme.colors.neutral[900],
+    fontWeight: 400,
+    background: isSelected ? theme.colors.neutral[50] : "#FFFFFF",
+    margin: 0,
+    height: 48,
+  }),
+};
