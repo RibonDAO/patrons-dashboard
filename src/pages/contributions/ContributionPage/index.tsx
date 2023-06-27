@@ -43,6 +43,8 @@ function ContributionPage(): JSX.Element {
             onOptionChanged={(contribution) => {
               setCurrentContribution(contribution);
             }}
+            defaultValue={contributions[0]}
+            isSearchable
           />
         </S.SelectContributionContainer>
       )}
