@@ -1,61 +1,55 @@
 import { clickOn, renderComponent } from "config/testUtils";
 import {
-  expectFunctionNotToHaveBeenCalledWith,
   expectTextNotToBeInTheDocument,
   expectTextToBeInTheDocument,
 } from "config/testUtils/expects";
-import Dropdown from ".";
+import { fireEvent, screen } from "@testing-library/react";
+import Select from ".";
 
-describe("Dropdown", () => {
+describe("Select", () => {
   const mockFn = jest.fn();
 
   beforeEach(() => {
     renderComponent(
-      <Dropdown
-        name="dropdown"
+      <Select
+        name="select"
         values={["test1", "test2"]}
         label="dropdown"
         onOptionChanged={mockFn}
+        placeholder="placeholder"
       />,
     );
   });
 
-  it("renders the label", () => {
-    expectTextToBeInTheDocument("dropdown");
+  it("renders the placeholder", () => {
+    expectTextToBeInTheDocument("placeholder");
   });
 
-  it("shows the options when clicked", () => {
-    clickOn("dropdown");
-    expectTextToBeInTheDocument("test1");
-    expectTextToBeInTheDocument("test2");
-  });
+  describe("when focusing the input", () => {
+    beforeEach(() => {
+      const input = screen.getByText("placeholder");
+      fireEvent.focus(input);
+      fireEvent.keyDown(input, {
+        key: "ArrowDown",
+        code: 40,
+      });
+    });
 
-  it("calls the onOptionChanged function with correct params", () => {
-    clickOn("dropdown");
-    clickOn("test1");
+    it("shows the options when clicked", () => {
+      expectTextToBeInTheDocument("test1");
+      expectTextToBeInTheDocument("test2");
+    });
 
-    expect(mockFn).toHaveBeenCalledWith("test1");
-  });
+    it("calls the onOptionChanged function with correct params", () => {
+      clickOn("test1");
 
-  it("update optionsVisible state when onClose", () => {
-    clickOn("dropdown");
-    clickOn("test1");
-    expectTextNotToBeInTheDocument("test1");
-  });
+      expect(mockFn).toHaveBeenCalledWith("test1");
+    });
 
-  describe("without onOptionChanged", () => {
-    const onOptionChangedMock = jest.fn();
-    it("should not call onOptionChanged when clicked", () => {
-      renderComponent(
-        <Dropdown
-          name="dropdown-without-onOptionChanged"
-          values={["option1", "option2"]}
-          label="dropdown-without-onOptionChanged"
-        />,
-      );
-      clickOn("dropdown-without-onOptionChanged");
-      clickOn("option1");
-      expectFunctionNotToHaveBeenCalledWith(onOptionChangedMock, "test1");
+    it("update optionsVisible state when onClose", () => {
+      clickOn("test1");
+
+      expectTextNotToBeInTheDocument("test2");
     });
   });
 });
