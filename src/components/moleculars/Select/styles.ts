@@ -37,7 +37,7 @@ export const selectInputStyles: StylesConfig = {
   option: (base, { isSelected }) => ({
     ...base,
     "&:hover": {
-      borderColor: "#CCCCCC",
+      borderColor: theme.colors.neutral[100],
       background: theme.colors.neutral[50],
       cursor: "pointer",
     },
@@ -46,5 +46,7 @@ export const selectInputStyles: StylesConfig = {
     background: isSelected ? theme.colors.neutral[50] : "#FFFFFF",
     margin: 0,
     height: 48,
+    display: "flex",
+    alignItems: "center",
   }),
 };
