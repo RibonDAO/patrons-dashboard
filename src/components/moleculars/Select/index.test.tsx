@@ -1,6 +1,5 @@
 import { clickOn, renderComponent } from "config/testUtils";
 import {
-  expectFunctionNotToHaveBeenCalledWith,
   expectTextNotToBeInTheDocument,
   expectTextToBeInTheDocument,
 } from "config/testUtils/expects";
