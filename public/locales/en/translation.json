@@ -68,7 +68,7 @@
   "auth": {
     "signInPage": {
       "signInButton": "Send authentication link",
-      "emailSent": "We sent you an account confirmation e-mail",
+      "emailSent": "We sent you an e-mail",
       "emailSentDescription": "Please, click the safety link we sent you to confirm your account and enable your access.",
       "emailSentError": "Your e-mail is not registered",
       "emailSentErrorDescription": "Please, check if the e-mail provided is correct or contact our support team.",
@@ -80,7 +80,8 @@
       "privacyPolicyText": "Privacy Policy",
       "privacyPolicyLink": "https://ribon.io/en/privacy-policy/#privacy",
       "accessUserSupport": "Access user support",
-      "userSupportLink": "https://api.whatsapp.com/send/?phone=554896605461&text=Hii+Ribon%2C+let’s+talk%3F+&type=phone_number&app_absent=0"
+      "userSupportLink": "https://api.whatsapp.com/send/?phone=554896605461&text=Hii+Ribon%2C+let’s+talk%3F+&type=phone_number&app_absent=0",
+      "resendEmail": "Resend e-mail"
     }
   },
   "layoutHeader": {
