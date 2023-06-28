@@ -19,6 +19,8 @@ export const GiftText = styled.p`
 `;
 
 export const SelectContributionContainer = styled.div`
+  margin-bottom: ${({ theme }) => theme.spacing(40)};
+
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     max-width: 328px;
   }
