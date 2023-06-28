@@ -71,7 +71,7 @@ function GiftBoostSection({
           <Data
             data={contributionsInspiredByYou}
             label={t("contributionsInspiredByYou")}
-            color={brand.tertiary[800]}
+            color={brand.secondary[800]}
           />
         </S.DataContainer>
         <S.DataContainer>
