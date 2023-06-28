@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { stylizedDisplayXs } from "styles/typography/stylized";
-import { defaultBodyXsRegular } from "styles/typography/default";
+import {
+  defaultBodyMdSemibold,
+  defaultBodyXsRegular,
+} from "styles/typography/default";
+import Button from "components/atomics/buttons/Button";
 
 export const Container = styled.div`
   width: 100vw;
@@ -80,4 +84,32 @@ export const LeftBottomShape = styled.img`
     bottom: 0;
     left: 0;
   }
+`;
+
+export const SentEmailSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+export const SentEmailTitle = styled.h1`
+  ${stylizedDisplayXs};
+  color: ${({ theme }) => theme.colors.brand.primary[900]};
+  margin-bottom: ${({ theme }) => theme.spacing(8)};
+  text-align: center;
+`;
+export const SentEmailDescription = styled.p`
+  ${defaultBodyMdSemibold};
+  color: ${({ theme }) => theme.colors.neutral[500]};
+  margin-bottom: ${({ theme }) => theme.spacing(24)};
+  text-align: center;
+`;
+export const LockIcon = styled.img`
+  height: 144px;
+  margin-bottom: ${({ theme }) => theme.spacing(24)};
+`;
+
+export const ResendEmailButton = styled(Button)`
+  background-color: ${({ theme }) => theme.colors.brand.primary[600]};
+  border-color: ${({ theme }) => theme.colors.brand.primary[600]};
+  height: 48px;
 `;
