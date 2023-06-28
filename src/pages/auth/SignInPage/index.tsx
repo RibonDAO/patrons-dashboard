@@ -2,7 +2,6 @@ import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import extractUrlValue from "lib/extractUrlValue";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
-import Loader from "components/atomics/Loader";
 import { useTranslation } from "react-i18next";
 import Button from "components/atomics/buttons/Button";
 import RibonIcon from "assets/icons/ribon-icon.svg";
@@ -11,6 +10,7 @@ import ModalDialog from "components/moleculars/modals/ModalDialog";
 import { useAuthentication } from "contexts/authenticationContext";
 import rightTopShape from "assets/images/shape-top-right.svg";
 import leftBottomShape from "assets/images/shape-bottom-left.svg";
+import Spinner from "components/atomics/Spinner";
 import * as S from "./styles";
 
 function SignInPage(): JSX.Element {
@@ -66,7 +66,7 @@ function SignInPage(): JSX.Element {
   return (
     <S.Container>
       {loading ? (
-        <Loader />
+        <Spinner size="32px" />
       ) : (
         <S.ContentContainer>
           <S.RightTopShape src={rightTopShape} />

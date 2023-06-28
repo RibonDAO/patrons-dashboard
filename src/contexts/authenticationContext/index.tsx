@@ -95,7 +95,7 @@ function AuthenticationProvider({ children }: Props) {
       sendAuthenticationLink,
       signInByAuthToken,
     }),
-    [accessToken],
+    [accessToken, loading],
   );
 
   return (

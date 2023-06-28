@@ -3,6 +3,7 @@ import { theme } from "@ribon.io/shared/styles";
 import Title from "components/moleculars/Title";
 import { Contribution } from "@ribon.io/shared/types";
 import { useContributionDirectImpact } from "hooks/apiHooks/useContributionDirectImpact";
+import Spinner from "components/atomics/Spinner";
 import * as S from "./styles";
 import DirectImpactSection from "./DirectImpact";
 import IndirectImpactSection from "./IndirectImpact";
@@ -15,7 +16,7 @@ function ImpactSection({ contribution }: Props): JSX.Element {
     keyPrefix: "contributions.impactSection",
   });
   const { brand } = theme.colors;
-  const { directImpact } = useContributionDirectImpact(contribution);
+  const { directImpact, isLoading } = useContributionDirectImpact(contribution);
 
   const icon = {
     name: "psychiatry",
@@ -31,12 +32,18 @@ function ImpactSection({ contribution }: Props): JSX.Element {
         icon={icon}
         secondaryColor={brand.primary[50]}
       />
-      {directImpact && <DirectImpactSection directImpact={directImpact} />}
-      <IndirectImpactSection
-        boost={contribution.stats.boostAmount}
-        newContributors={contribution.stats.boostNewContributors}
-        newPatrons={contribution.stats.boostNewPatrons}
-      />
+      {isLoading ? (
+        <Spinner size="32px" />
+      ) : (
+        <>
+          {directImpact && <DirectImpactSection directImpact={directImpact} />}
+          <IndirectImpactSection
+            boost={contribution.stats.boostAmount}
+            newContributors={contribution.stats.boostNewContributors}
+            newPatrons={contribution.stats.boostNewPatrons}
+          />
+        </>
+      )}
     </S.ImpactContainer>
   );
 }
