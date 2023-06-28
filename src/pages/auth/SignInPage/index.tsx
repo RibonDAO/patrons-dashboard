@@ -11,17 +11,18 @@ import { useAuthentication } from "contexts/authenticationContext";
 import rightTopShape from "assets/images/shape-top-right.svg";
 import leftBottomShape from "assets/images/shape-bottom-left.svg";
 import Spinner from "components/atomics/Spinner";
+import lockIcon from "assets/images/lock.svg";
 import * as S from "./styles";
 
 function SignInPage(): JSX.Element {
   const { search } = useLocation();
   const navigateTo = useNavigate();
-  const [modalVisible, setModalVisible] = useState(false);
   const [errorModalVisible, setErrorModalVisible] = useState(false);
   const { t } = useTranslation("translation", {
     keyPrefix: "auth.signInPage",
   });
   const [email, setEmail] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
   const { signInByAuthToken, loading, sendAuthenticationLink } =
     useAuthentication();
 
@@ -52,8 +53,7 @@ function SignInPage(): JSX.Element {
     sendAuthenticationLink({
       email,
       onSuccess: () => {
-        setModalVisible(true);
-        setEmail("");
+        setEmailSent(true);
       },
       onError: () => {
         setErrorModalVisible(true);
@@ -72,54 +72,63 @@ function SignInPage(): JSX.Element {
           <S.RightTopShape src={rightTopShape} />
           <S.LeftBottomShape src={leftBottomShape} />
           <ModalDialog
-            visible={modalVisible}
-            setVisible={setModalVisible}
-            title={t("emailSent")}
-            type="success"
-            description={t("emailSentDescription")}
-          />
-          <ModalDialog
             visible={errorModalVisible}
             setVisible={setErrorModalVisible}
             title={t("emailSentError")}
             type="error"
             description={t("emailSentErrorDescription")}
           />
-          <S.RibonLogo src={RibonIcon} alt="Ribon" />
-          <S.WelcomeText>{t("welcomeText")}</S.WelcomeText>
-          <S.FormContainer>
-            <S.Input
-              key="email"
-              name="email"
-              id="email"
-              type="email"
-              placeholder="E-mail"
-              value={email}
-              onChange={onEmailInputChange}
-              required
-            />
+          {emailSent ? (
+            <S.SentEmailSection>
+              <S.LockIcon src={lockIcon} />
+              <S.SentEmailTitle>{t("emailSent")}</S.SentEmailTitle>
+              <S.SentEmailDescription>
+                {t("emailSentDescription")}
+              </S.SentEmailDescription>
+              <S.ResendEmailButton
+                text={t("resendEmail")}
+                onClick={handleSubmit}
+              />
+            </S.SentEmailSection>
+          ) : (
+            <>
+              <S.RibonLogo src={RibonIcon} alt="Ribon" />
+              <S.WelcomeText>{t("welcomeText")}</S.WelcomeText>
+              <S.FormContainer>
+                <S.Input
+                  key="email"
+                  name="email"
+                  id="email"
+                  type="email"
+                  placeholder="E-mail"
+                  value={email}
+                  onChange={onEmailInputChange}
+                  required
+                />
 
-            <Button
-              text={t("signInButton")}
-              onClick={handleSubmit}
-              disabled={invalidEmail()}
-            />
-          </S.FormContainer>
+                <Button
+                  text={t("signInButton")}
+                  onClick={handleSubmit}
+                  disabled={invalidEmail()}
+                />
+              </S.FormContainer>
 
-          <S.FooterText>
-            {t("footerStartText")}{" "}
-            <S.Link href={t("termsLink")} target="_blank" rel="noreferrer">
-              {t("termsText")}
-            </S.Link>
-            {t("footerEndText")}{" "}
-            <S.Link
-              href={t("privacyPolicyLink")}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {t("privacyPolicyText")}
-            </S.Link>
-          </S.FooterText>
+              <S.FooterText>
+                {t("footerStartText")}{" "}
+                <S.Link href={t("termsLink")} target="_blank" rel="noreferrer">
+                  {t("termsText")}
+                </S.Link>
+                {t("footerEndText")}{" "}
+                <S.Link
+                  href={t("privacyPolicyLink")}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {t("privacyPolicyText")}
+                </S.Link>
+              </S.FooterText>
+            </>
+          )}
         </S.ContentContainer>
       )}
     </S.Container>
