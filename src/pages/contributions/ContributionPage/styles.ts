@@ -2,13 +2,29 @@ import styled from "styled-components";
 import { defaultBodySmMedium } from "styles/typography/default";
 
 export const Container = styled.div`
-  padding-right: 228px;
-  padding-left: 228px;
+  padding-right: 16px;
+  padding-left: 16px;
   margin-bottom: ${({ theme }) => theme.spacing(64)};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    padding-right: 16px;
-    padding-left: 16px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
+    padding-right: 228px;
+    padding-left: 228px;
+  }
+
+  // TODO: Update this to new breakpoints after we decide a container component in DS
+  @media (min-width: 1700px) {
+    padding-right: 362px;
+    padding-left: 362px;
+  }
+
+  @media (min-width: 2000px) {
+    padding-right: 552px;
+    padding-left: 552px;
+  }
+
+  @media (min-width: 2300px) {
+    padding-right: 682px;
+    padding-left: 682px;
   }
 `;
 
