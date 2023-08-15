@@ -62,7 +62,7 @@ function ContributionPage(): JSX.Element {
             <S.Divider />
             {currentContribution?.stats && (
               <EngagementSection
-                totalDonors={currentContribution.stats.totalTickets?.toLocaleString()}
+                totalDonors={currentContribution.stats.totalDonors?.toLocaleString()}
                 donationsPerPerson={currentContribution.stats.avgDonationsPerPerson?.toLocaleString()}
                 firstTimeDonors={(
                   currentContribution.stats.totalTickets *
