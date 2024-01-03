@@ -76,7 +76,7 @@ function ContributionPage(): JSX.Element {
             {currentContribution?.stats && (
               <GiftBoostSection
                 amountToCause={`${currentContribution.stats.totalAmountToCause}`}
-                increaseAmount={`+${currentContribution.stats.totalIncreasePercentage.toFixed(
+                increaseAmount={`+${currentContribution.stats.currentIncreasePercentage.toFixed(
                   2,
                 )}%`}
                 contributionsInspiredByYou={`+${currentContribution.stats.boostAmount}`}

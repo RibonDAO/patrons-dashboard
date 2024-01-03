@@ -12,7 +12,7 @@ describe("GiftStatusSection", () => {
       totalTickets: 0,
       avgDonationsPerPerson: 0,
       boostAmount: "0",
-      totalIncreasePercentage: 0,
+      currentIncreasePercentage: 0,
       totalAmountToCause: "0",
       ribonFee: 0,
       boostNewContributors: 0,
